@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机抽题</title>
+    <style>
+        #box{
+            margin:auto;
+            width:1000px;
+            font-size:66px;
+            height:94px;
+            color:#138eee;
+            text-align: center;
+            margin-top: 200px;
+        }
+        #btn{
+            margin:auto;
+            width:200px;
+            text-align: center;
+            margin-top: 75px;
+            color:#fff;
+            font-size:25px;
+            cursor:pointer;
+        }
+      
+    </style>
+</head>
+<body id="bodybj" style="background-color: black;">
+    <div id="box">准备好抽常见面试题了？？？</div>
+    <div id="btn" onclick="doit()">开始抽题</div>
+    <script>
+        var problemList=['css盒子模型','let,const,var的区别','跨域以及同源策略',
+                        'position','BFC','五大浏览器以及内核','浏览器内核的理解',
+                        '事件代理','事件冒泡','重绘和回流','渲染时遇到js文件如何处理'];
+        var mytime=null;
+        function doit(){
+            var btn=window.document.getElementById('btn');
+            if(mytime==null){
+                btn.innerHTML='停止';
+                show();
+            }
+            else{
+                btn.innerHTML="开始抽题";
+                clearTimeout(mytime);
+                console.log(mytime);
+                mytime=null;
+            }
+        }
+        function show(){
+            var box=window.document.getElementById('box');
+            var num=Math.floor((Math.random()*100000))%problemList.length;
+            box.innerHTML=problemList[num];
+            mytime=setTimeout('show()',10);
+        }
+    </script>
+</body>
+</html>
