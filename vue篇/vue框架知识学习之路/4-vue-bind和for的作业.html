@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind和v-for作业示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-bind:class="[i==index?'active':'']" v-on:click="change(index)" v-for='(item,index) in movies'>
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                i:0,
+                movies:['海王','海尔兄弟','火影忍者','进击的巨人']
+            },
+            methods:{
+                change(index){
+                    this.i=index
+                }
+            }
+        })
+    </script>
+</body>
+</html>
