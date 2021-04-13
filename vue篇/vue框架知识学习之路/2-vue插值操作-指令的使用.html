@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <!-- v-once指令 在控制台可以通过app.message改变message的值，但是加了v-once之后则改变不了-->
+        <h2>{{message}}</h2>
+        <h2 v-once>{{message}}</h2>
+
+        <!-- v-html指令对标签进行解析，否则会以字符串形式输出 -->
+        <h2 v-html="url"></h2>
+
+        <!-- v-text的指令 用法示例如下 -->
+        <h2 v-text="message"></h2>
+
+
+    </div>
+    <script>
+        // const app=new Vue({
+        //     el:"#app",
+        //     data:{
+        //         message:"你好哇",
+        //         url:"<a href='http://www.baidu.com'>百度一下</a>"
+        //     }
+        // })
+
+        
+        //下面的定时器用来理解v-cloak这个指令的
+        //在vue解析之前，因为是定时器，所以解析在一秒之后，此时的message没有值，显示{{message}},解析之后才显示message的值
+        setTimeout(function(){
+            const app=new Vue({
+            el:"#app",
+            data:{
+                message:"你好哇",
+                url:"<a href='http://www.baidu.com'>百度一下</a>"
+            }
+        })
+        },1000)
+    </script>
+</body>
+</html>
