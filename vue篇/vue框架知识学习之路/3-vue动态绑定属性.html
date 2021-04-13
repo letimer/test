@@ -27,15 +27,34 @@
         此时相当于class绑定的是Active的值，即class="active" 所以对样式的设置为.active{ }-->
         <h2 :class="myActive">{{message}}</h2>
 
+        <!-- v-bind对象语法,加了{}，表示对象，下面这种情况表示该标签的类名为active 
+        class="{名：值}"-->
+        <h2 v-bind:class="{active:isActive,line:isLine}">{{messagetwo}}</h2>
+        <h2 v-bind:class="getClass()">{{messagetwo}}</h2>
+
+        <!--v-bind数组语法,class="['名1'，'名2']",此时将其作为字符串处理class="active line"-->
+        <h2 :class="['active','line']">{{messagetwo}}</h2>
+
+        <!--v-bind数组语法,class="[名1，名2]",此时将其作为变量处理class="active的值 line的值"-->
+        <h2 :class="['active','line']">{{messagetwo}}</h2>
+
     </div>
     <script>
         const app=new Vue({
             el:"#app",
             data:{
-                message:"你好哇",
+                message:"Bind绑定值",
+                messagetwo:'bind绑定对象',
                 myActive:"active",
+                isActive:true,
+                isLine:false,
                 imgUrl:"https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2210240481,2743465862&fm=26&gp=0.jpg",
                 aHref:'http://www.baidu.com'
+            },
+            methods:{
+                getClass(){
+                    return {active:this.isActive,line:this.isLine}
+                }
             }
         })
     </script>
