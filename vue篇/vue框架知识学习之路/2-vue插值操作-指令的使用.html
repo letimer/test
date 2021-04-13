@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
 </head>
 <body>
     <div id="app" v-cloak>
@@ -33,6 +38,7 @@
         
         //下面的定时器用来理解v-cloak这个指令的
         //在vue解析之前，因为是定时器，所以解析在一秒之后，此时的message没有值，显示{{message}},解析之后才显示message的值
+        //在需要声明信息的div或者标签元素中加上v-cloak，并且设置其样式为None，则会在编译之前不显示{{message}}
         setTimeout(function(){
             const app=new Vue({
             el:"#app",

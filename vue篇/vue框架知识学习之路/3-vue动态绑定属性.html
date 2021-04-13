@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态绑定之bind</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用bind动态绑定值的用法 -->
+        <!-- 错误做法：<img src="{{imgUrl}}">:这里不可以使用mstache语法，应该是在标签内容区域使用-->
+        <!-- 使之动态改变的正确做法，使用bind绑定src,此时解析会明白动态的给这个属性进行绑定 -->
+        <!-- 语法糖简写为 ： -->
+        <img v-bind:src="imgUrl" alt="图片显示">
+        <a v-bind:href="aHref">百度一下</a>
+        <a :href="aHref">百度一下</a>
+
+
+        <!-- 使用bind动态绑定class 
+        此时相当于class绑定的是Active的值，即class="active" 所以对样式的设置为.active{ }-->
+        <h2 :class="myActive">{{message}}</h2>
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:"你好哇",
+                myActive:"active",
+                imgUrl:"https://dss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2210240481,2743465862&fm=26&gp=0.jpg",
+                aHref:'http://www.baidu.com'
+            }
+        })
+    </script>
+</body>
+</html>
