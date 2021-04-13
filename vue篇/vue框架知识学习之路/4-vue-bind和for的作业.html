@@ -14,6 +14,8 @@
 </head>
 <body>
     <div id="app">
+        <!-- 这次小作业练习思路：点击时将索引Index赋值给i,然后用i去判断哪个索引所在的列被点击从而实现效果 -->
+        <!-- 思路卡点：忽视了v-bind绑定class时，对象采用 名：值 形式，绑定数组采用的是 名 导致卡了一下 -->
         <ul>
             <li v-bind:class="[i==index?'active':'']" v-on:click="change(index)" v-for='(item,index) in movies'>
                 {{item}}
