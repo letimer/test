@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>行星环绕</title>
+	</head>
+	<body>
+		<div style="text-align: center;">
+		
+		    <canvas id="myCanvas" width="800" height="800" style="border: 1px solid #fff123"></canvas>
+		
+		</div>
+		
+		<script>
+			var c = document.getElementById("myCanvas");
+			
+			var cont = c.getContext("2d");
+
+			drawSolarSystem();
+			
+			function drawSolarSystem(){
+				//清空矩形区域
+				cont.clearRect(0,0,800,800);
+				//设置背景色
+				cont.fillStyle="#20202c";
+				cont.fillRect(0,0,800,800);
+				//绘制太阳
+				cont.beginPath();
+				cont.arc(400,400,60,0,2*Math.PI);
+				//颜色设置渐变
+				//createRadialGradient为圆形内的颜色渐变
+				//前三个参数为渐变初始的圆心坐标以及半径
+				//后三个为渐变结束圆的圆心坐标和半径
+				color = cont.createRadialGradient(400,400,10,400,400,60);
+				color.addColorStop(0.2,'yellow');
+				color.addColorStop(0.7,'orange')
+				color.addColorStop(1,'#20202c');
+				//填充颜色
+				cont.fillStyle=color;
+				cont.fill();
+				//保存
+				cont.save();
+				//绘制第一条轨道和轨道上的行星
+				drawTrail(cont,100,400,400,"rgba(255,255,255,0.5)");
+				drawStar(cont,10,"skyblue",100,0,12);
+				//绘制第二条轨道和轨道上的行星
+				drawTrail(cont,140,-100,0,"rgba(255,255,255,0.5)");
+				drawStar(cont,10,"red",140,0,60);
+				//绘制第三条轨道和轨道上的行星
+				drawTrail(cont,200,-140,0,"rgba(255,255,255,0.5)");
+				drawStar(cont,20,"blue",200,0,36000);
+				//绘制环绕第三条轨道上的行星的轨道及环绕的行星
+				drawTrail(cont,40,0,0,"rgba(255,255,255,0.5)");
+				drawStar(cont,10,"yellow",40,0,6);
+				//恢复
+				cont.restore();
+				
+				requestAnimationFrame(drawSolarSystem);
+			}
+			//绘制环绕太阳的行星
+			//各参数说明
+			//radius：行星半径
+			//color：行星颜色
+			//starX，starY：将行星的圆心坐标设置为原点
+			//times：运行倍数
+			function drawStar(cont,radius,starcolor,starX,starY,times){
+				var time = new Date();
+				cont.beginPath();
+				//行星运行速度
+				//将时间获取设置为毫秒可使得行星运动更为流畅
+				cont.rotate(2 * Math.PI / times * time.getSeconds()+ 2 * Math.PI / (times*1000) * time.getMilliseconds());
+				//将行星的圆心坐标设置为原点
+				cont.translate(starX,starY);
+				//画出行星
+				cont.arc(0,0,radius,0,2*Math.PI);
+				color = cont.createRadialGradient(0,0,1,0,0,radius);
+				color.addColorStop(0.5,starcolor);
+				color.addColorStop(1,'#20202c');
+				cont.fillStyle=color;
+				cont.fill();
+			}
+			//绘制行星轨迹
+			//各参数说明
+			//radius：轨道半径
+			//orginX，orginY：轨道圆心设为原点
+			//trailColor：轨道颜色
+			function drawTrail(cont,radius,orginX,orginY,TrailColor){
+				cont.translate(orginX,orginY);
+				cont.beginPath();
+				cont.strokeStyle=TrailColor;
+				cont.arc(0,0,radius,0,2*Math.PI);
+				cont.stroke();
+			}
+
+		</script>
+	</body>
+</html>
