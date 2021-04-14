@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>计算属性当中的getter和setter</title>
+</head>
+<body>
+    <div id="app">
+       <h2>{{totalPrice}}</h2>
+       <h2 v-bind:style="{color:Bred}">{{message}}</h2>
+    </div>
+    <script>
+
+        //每个计算属性当中都包含一个getter和setter
+        //在之前的示例当中，我们只是通过getter来进行获取
+        //我们也可以提供一个setter方法（不常用）
+        const app=new Vue({
+            el:"#app",
+            data:{
+                firstName:'邓',
+                lastName:'晓彤',
+                books:[
+                    {id:110,name:'html',price:119},
+                    {id:111,name:'css',price:120},
+                    {id:112,name:'js',price:121}
+                ]
+            },
+            //computed:计算属性
+            computed:{
+
+                //filter/map/reduce
+
+                fullName(){
+                    return this.firstName+this.lastName
+                },
+                totalPrice:function(){
+                    let result=0;
+                    for(let i=0;i<this.books.length;i++){
+                        result+=this.books[i].price
+                    }
+                    return result;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
