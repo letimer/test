@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-bind动态绑定样式</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind绑定style的对象语法 -->
+
+        <!-- v-bind:style="{key(属性名):'value(属性值)'}"
+             如果value值不加上‘’的话会将其当做是一个变量——内部解析结果 -->
+        <h2 :style="{'font-size':'50px'}">{{message}}</h2>
+        <h2 :style="{fontSize:'50px'}">{{message}}</h2>
+        <!-- 上面的那种写法style为一个定值，如果使之动态显示样式，则采用以下方法 -->
+        <h2 :style="{'font-size':finalSize+'px',color:finalColor}">{{message}}</h2>
+        <!-- 采用函数来获得其style -->
+        <h2 :style="getStyle()">{{message}}</h2>
+
+        <!-- v-bind绑定style的数组语法 -->
+        <h2 :style="[baseStyle]">{{message}}</h2>
+
+
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:"你好哇",
+                finalSize:100,
+                finalColor:"red",
+                baseStyle:{
+                    backgroundColor:"red"
+                }
+            },
+            methods:{
+                getStyle(){
+                    return {fontSize:this.finalSize+'px',backgroundColor:this.finalColor}
+                }
+            }
+        })
+    </script>
+</body>
+</html>
