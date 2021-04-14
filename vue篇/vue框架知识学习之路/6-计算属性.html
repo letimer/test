@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的计算属性</title>
+</head>
+<body>
+    <div id="app">
+        <!-- vue计算属性引入的循序渐进 -->
+
+        <!-- 普通操作，看起来不舒服 -->
+        <h2>{{firstName+lastName}}</h2>
+        <h2>{{firstName}}{{lastName}}</h2>
+
+        <!-- 采用了计算属性的写法，如果使用函数也可以实现，但是各有各的优点而且函数不直观 -->
+        <h2>{{fullName}}</h2>
+
+        <!-- 计算属性的复杂操作 -->
+        <h2>总价格：{{totalPrice}}</h2>
+
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                firstName:'邓',
+                lastName:'晓彤',
+                books:[
+                    {id:110,name:'html',price:119},
+                    {id:111,name:'css',price:120},
+                    {id:112,name:'js',price:121}
+                ]
+            },
+            //computed:计算属性
+            computed:{
+
+                //filter/map/reduce
+
+                fullName(){
+                    return this.firstName+this.lastName
+                },
+                totalPrice:function(){
+                    let result=0;
+                    for(let i=0;i<this.books.length;i++){
+                        result+=this.books[i].price
+                    }
+                    return result;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
