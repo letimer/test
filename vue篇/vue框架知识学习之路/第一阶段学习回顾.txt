@@ -1,0 +1,44 @@
+    1.1邂逅vue.js
+        vue的渐进式
+        vue的特点
+            数据和界面解耦，组件化，虚拟dom
+    1.2vue的初体验
+        hello vue
+            mustache->体验vue响应式
+        Vue列表展示
+            v-for
+        vue计数器小案例
+            事件监听：click->methods
+    1.3vue中的MVVM
+    1.4创建vue时，option可以放哪些东西
+            el:
+            data:
+            methods:
+            生命周期函数
+    2.1插值语法
+            mastache语法
+            v-once
+            v-html
+            v-text
+            v-pre:{{}}
+            v-cloak:斗篷
+    3.1v-bind
+        v-bind绑定基本属性
+            v-bind:src
+            v-bind:href
+        v-bind动态绑定class
+            对象语法：
+            ：class="{类名:布尔值}"
+            数组语法
+            :class="['键名','键名2']"
+        v-bind动态绑定style
+            对象语法：
+            :style="{属性名:“value”}"
+            数组语法:
+    4.1计算属性
+        案例一：firstname+lastName
+        案例二：books数组对象总用计算属性算的其总价格
+
+
+
+
