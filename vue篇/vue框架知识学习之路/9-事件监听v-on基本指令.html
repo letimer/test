@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的事件监听</title>
+    <!-- v-on 当通过methods中定义方法，以供click调用时,需要注意两点：
+        1.如果方法不需要额外参数，那么方法后的（）可以不添加
+        2.如果方法本身中有一个参数，同时需要event时，那么可以通过$event传入事件（在标签中使用{{}}，（）不能省）
+     -->
+</head>
+<body>
+    <div id="app">
+        <h2>{{counter}}</h2>
+        <!-- 实现数字点击加减的两种方式
+        <button @click="add">+</button>
+        <button @click="dre">-</button> -->
+        <button @click="counter++">+</button>
+        <button @click="counter--">-</button>
+
+        <!-- 1——事件调用的方法没有参数 -->
+        <button @click="btn1Click()">按钮1</button>
+        <button @click="btn1Click">按钮1</button>
+
+        <!-- 2——在事件定义时，写方法时省略了小括号，但是方法本身是需要一个参数的，这个时候，vue会默认将浏览器生产的
+        event事件对象作为参数传入到方法当中 -->
+        <button @click="btn2Click">按钮2</button>
+
+        <!-- 3——方法定义时，我们需要event对象，同时又需要其他参数，则需要使用$event
+        在调用方式时，如何手动的获取到浏览器参数的event对象：$event-->
+        <button @click="btn3Click('abc',$event)">按钮3</button>
+        <button @click="btn3Click(123,$event)">按钮3</button>
+    </div>
+    <script>
+        // 在前端开发中，我们需要经常和用户交互这个时候，我们就必须监听用户发生的时间，比如点击，拖拽，键盘事件等
+        //在vue当中如何监听事件呢？用v-on指令
+        const app=new Vue({
+            el:"#app",
+            data:{
+                counter:0,
+            },
+            methods:{
+                //第一种无参数传入情况
+                btn1Click(){
+                    console.log("btn1");
+                },
+
+                //第二种，事件源对象,使用逗号隔开，否则是字符串拼接格式输出结果
+                btn2Click(btn2){
+                    console.log("btn2----",btn2);
+                },
+
+                //参数和事件源同时需要的情况
+                btn3Click(abc,event){
+                    console.log("btn3",abc,event);
+                },
+                add(){
+                    this.counter++
+                },
+                dre(){
+                    this.counter--
+                }
+            }
+        })
+    </script>
+</body>
+</html>
