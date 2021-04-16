@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的条件判断</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if和v-else的使用 -->
+        <h2 v-if="isShow">{{message}}</h2>
+        <h2 v-else>isShow为false时，显示我</h2>
+ 
+        <!-- v-if和v-else-if和v-else的使用示例1 -->
+        <p v-if="score>=90">优秀</p>
+        <p v-else-if="score>=80">良好</p>
+        <p v-else-if="score>60">还行</p>
+        <p v-else>不及格</p>
+        
+        <!-- v-if和v-else-if和v-else的使用示例1——改进方法 -->
+        <h2>{{result}}</h2>
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:"你好哇",
+                isShow:true,
+                score:90
+            },
+            computed:{
+                result(){
+                    let scoreMessage='';
+                    if(this.score>=90){
+                        scoreMessage="优秀"
+                    }else if(this.score>=80){
+                        scoreMessage="良好"
+                    }else{
+                        scoreMessage="还行吧"
+                    }
+                    return scoreMessage;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
