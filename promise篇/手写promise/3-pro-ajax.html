@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送AJAX请求</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">promise封装AJAX操作</h2>
+        <button class="btn" id="btn">点击发送AJAX</button>
+    </div>
+    <script>
+        const btn=document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            //创建promise封装
+            const p=new XMLHttpRequest((resolve,reject)=>{
+                  //创建对象
+            const xhr=new XMLHttpRequest();
+            //初始化
+            xhr.open('get','./pro实践练习.js');
+            //发送
+            xhr.send();
+            //处理响应结果
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    //判断状态码
+                    if(xhr.status>=200&&xhr.status<300){
+                        //控制台输出响应体
+                        resolve(xhr.response);
+                    }else{
+                        //控制台输出响应状态码
+                        reject(xhr.status);
+                    }
+                }
+            }
+            p.then((value)=>{
+                console.log(value)
+
+            },(reason)=>{
+                console.log(reason);
+            })
+            });
+        });
+    </script>
+    
+</body>
+</html>

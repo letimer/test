@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise关键问题,串联多个操作任务,异常穿透</title>
+</head>
+<body>
+    <script>
+        //1.resolve和then的先后执行顺序
+        //如果没有异步任务，一般是先resolve再then,如果是有了异步任务如下所示，则先是then再是resolve
+        // let p=new Promise((resolve,reject)=>{
+        //      setTimeout(()=>{
+        //          resolve('ok');
+        //      },1000);
+        //   });
+        //   p.then(value=>{
+        //       return new Promise((resolve,reject)=>{
+        //           resolve('success');
+        //       }).then(value=>{
+        //           //返回一个成功的promise对象，所以下列输出结果为：success
+        //         console.log(value);
+        //       }).then(value=>{
+        //           //上一行的返回时success字符串，所以下列输出结果是undefined
+        //         console.log(value);
+        //       })
+        //   },reason=>{
+        //   })
+        //2.promise串联多个任务
+        // let p=new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         resolve('ok');
+        //     },1000);
+        // });
+
+        // p.then(value=>{
+        //     return new Promise((resolve,reject)=>{
+        //         resolve('success');
+        //     });
+        // }).then(value=>{
+        //     console.log(value);
+        // }).then(value=>{
+        //     console.log(value);
+        // })
+
+
+
+        //3.异常穿透,在最后面来一个catch则不用管中间执行过程中是否出现失败的情况
+        let p=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve('ok');
+            },1000);
+        });
+
+    
+        p.then(value=>{
+            console.log(111);
+        }).then(value=>{
+            console.log(222);
+        }).then(value=>{
+            console.log(333);
+        }).catch(reason=>{
+            console.log(reason);
+        })
+
+
+        //中断promise链，返回一个pending状态的promise对象即可
+        let p=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve('ok');
+            },1000);
+        });
+
+    
+        p.then(value=>{
+            console.log(111);
+            return new Promise(()=>{});
+        }).then(value=>{
+            console.log(222);
+        }).then(value=>{
+            console.log(333);
+        }).catch(reason=>{
+            console.log(reason);
+        })
+
+
+    </script>
+</body>
+</html>
