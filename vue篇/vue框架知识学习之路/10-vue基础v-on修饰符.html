@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-on的一些修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 点击按钮时，会触发按钮的点击事件和div的点击事件——事件冒泡 -->
+        <div @click="divClick">
+            <button @click="btnClick">按钮</button>
+        </div>
+
+        <!--1.stop 阻止事件冒泡，使用stop修饰符，用法如下所示 -->
+        <div @click="divClick">
+            <button @click.stop="btnClick">按钮</button>
+        </div>
+        <br>
+
+        <!-- 2.prevent修饰符的使用 -->
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="submitClick">
+        </form>
+
+        <!-- 3.监听某个键盘按键的点击 -->
+        <input type="text" @keyup.enter="keyUp">
+
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:"你好哇"
+            },
+            methods:{
+                btnClick(){
+                    console.log("btnClick");
+                },
+                divClick(){
+                    console.log("divClick");
+                },
+                submitClick(){
+                    console.log("submitClick");
+                },
+                keyUp(){
+                    console.log("keyup");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
