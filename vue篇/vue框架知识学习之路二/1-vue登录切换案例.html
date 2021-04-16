@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的登录切换小案例</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 可以实现点击切换类型就能够切换页面显示出来的文本和输入框  但是存在问题如下：
+        当页面出现用户账号并进行输入时，此时点击切换类型 文本输入框中的内容还在 -->
+
+        <!-- 上述情况的原因：在vue进行dom渲染时，出于性能考虑，会尽可能的复用已经存在的元素，而不是重新创建新的元素
+             在上述案例当中，vue内部会发现原来的Input元素不再使用，直接作为else中的input来使用 -->
+        <span v-if="isShow">
+            <label for="user">用户账号:</label>
+            <input id="user" type="text" placeholder="用户账号"/>
+        </span>
+        <span v-else>
+            <label for="email">用户地址:</label>
+            <input id="email" type="text" placeholder="用户地址"/>
+        </span>
+        <button @click="change">切换类型</button>
+        <!-- 解决方案：如果我们不希望vue出现类似重复利用问题，可以对相应的Input添加key
+        并且我们需要保证key 是不同的 -->
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                isShow:true
+            },
+            methods:{
+                change(){
+                    this.isShow=!this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+</html>
