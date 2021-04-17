@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for绑定属性key和不绑定属性key的区别</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- key和item绑定一一对应 -->
+            <li v-for="item in letters" :key="item">
+                {{item}}
+            </li>
+        </ul>
+        <!-- 当一层有很多相同的节点时，也就是列表节点时，我们希望插入一个新的节点
+          我们希望在a和b之间加入一个f,diff算法默认执行时这样的，把b更新为f,c更新为b...,这样效率不高
+         
+          改进——》使用一个key来给每一个节点做一个唯一标识：
+          1.diff算法就可以正确的识别此节点
+          2.找到正确的位置区插入新的节点
+        
+          总结：key的作用主要是为了高效的更新虚拟dom-->
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                letters:['a','b','c','d']
+            }
+        })
+    </script>
+</body>
+</html>
