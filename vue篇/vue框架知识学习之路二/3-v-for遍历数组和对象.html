@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for循环遍历</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 1.在遍历的过程中没有使用下标值 -->
+        <ul>
+            <li v-for="item in names">
+                {{item}}
+            </li>
+        </ul>
+
+        <!-- 2.在遍历过程中，获取索引值 -->
+        <ul>
+            <li v-for="(item,index) in names">
+                {{index}}-{{item}}
+            </li>
+        </ul>
+
+        <!-- 1.v-for遍历对象,如果只是获取一个值，则获取的是属性值Value -->
+        <ul>
+            <li v-for="item in info">
+                {{item}}
+                {{item.name}}
+            </li>
+        </ul>
+        <!-- 2.如果获取对象的key和value,格式为：(value,key) -->
+        <ul>
+            <li v-for="(value,key) in info">
+                {{value}}-{{key}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                names:["tom","query","js",'html'],
+                info:{
+                    name:"why",
+                    age:18,
+                    height:1.88
+                }
+            }
+        })
+    </script>
+</body>
+</html>
