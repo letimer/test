@@ -16,11 +16,11 @@
              在上述案例当中，vue内部会发现原来的Input元素不再使用，直接作为else中的input来使用 -->
         <span v-if="isShow">
             <label for="user">用户账号:</label>
-            <input id="user" type="text" placeholder="用户账号"/>
+            <input id="user" type="text" key="username" placeholder="用户账号"/>
         </span>
         <span v-else>
             <label for="email">用户地址:</label>
-            <input id="email" type="text" placeholder="用户地址"/>
+            <input id="email" type="text" key="useremail" placeholder="用户地址"/>
         </span>
         <button @click="change">切换类型</button>
         <!-- 解决方案：如果我们不希望vue出现类似重复利用问题，可以对相应的Input添加key
