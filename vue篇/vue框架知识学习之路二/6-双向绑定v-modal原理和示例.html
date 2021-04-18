@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的template</title>
+</head>
+<body>
+    <div id="app">
+        表单控件在实际开发中是非常常见的，
+
+
+        <!-- v-model绑定radio -->
+        <label for="sexone">男</label>
+        <input  id="sexone" type="radio" name="gender" value="男" v-model="sex">
+        <label for="sextwo">女</label>
+        <input  id="sextwo" type="radio" name="gender" value="女" v-model="sex">
+        <p>性别是：{{sex}}</p>
+
+        <!-- v-model绑定checkbox -->
+        <label for="a">广东</label>
+        <input type="checkbox" value="广东" id="a" v-model="city">
+        <label for="b">广西</label>
+        <input type="checkbox" value="广西" id="b" v-model="city">
+        <label for="c">江西</label>
+        <input type="checkbox" value="江西" id="c" v-model="city">
+        <p>你想去的城市是：{{city}}</p>
+
+        <!-- v-model绑定select -->
+        <select name="fav" v-model="fav">
+            <option value="足球" >足球</option>
+            <option value="篮球" >篮球</option>
+            <option value="羽毛球" >羽毛球</option>
+        </select>
+        <p>你的爱好是：{{fav}}</p>
+
+        <!-- <label :for="item" v-for="item in orginHobbies">
+            <input type="checkbox" :value="item" :id="item" v-model="hobbies">
+            {{item}}
+        </label> -->
+
+
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                sex:'',
+                city:[],
+                fav:''
+                // ,
+                // hobbies:[],
+                // orginHobbies:['唱歌','跳舞','乒乓球','台球']
+            }
+        })
+    </script>
+</body>
+</html>
