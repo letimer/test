@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>vue的template</title>
+    <title>vue的组件化</title>
 </head>
 <body>
     <div id="app">
@@ -30,6 +30,23 @@
         <html-a></html-a>
     </div>
     <script>
+        // 语法糖注册全局组件示例
+        //语法糖注册局部组件也类似，只是对象放在实例的components后面罢了
+
+
+        // Vue.component("html-a",{
+        //     data(){
+        //         return {
+        //             message:"我是组件"
+        //         }
+        //     })
+        // const app=new Vue({
+        //     el:"#app",
+        //     data:{
+        //     }
+        // })
+        
+
         //1.创建组件构造器
         const child=Vue.extend({
             data(){
@@ -39,8 +56,9 @@
             },
             //template代表我们自定义组件的模板，模板需要一个根元素
             //该模板就是在使用到组建的地方，要显示的html代码
-            template:`<div>{{message}}</div>`,
-            // props:['pMessage']
+            template:`<div>
+                           {{message}}
+                      </div>`,
         })
 
         //注册组件
@@ -48,7 +66,6 @@
         const app=new Vue({
             el:"#app",
             data:{
-                pmessage:"我是父组件"
             }
         })
     </script>
