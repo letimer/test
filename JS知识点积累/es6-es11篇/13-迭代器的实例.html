@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器的案例——自定义遍历数据</title>
+</head>
+<body>
+    <script>
+        //声明一个对象
+        const banji={
+            name:"终极一班",
+            stus:[
+                "xiaoming",
+                "xiaoning",
+                "xiaotian",
+                "knight"
+            ],
+    //     迭代器的工作原理：
+    // 1.创建一个指针对象，指向当前数据结构的起始位置
+    // 2.每一次调用对象的next方法，指针自动指向数据结构的第一个成员
+    // 3.接下来不断调用next方法，指针一直往后移动，直到最后一个成员
+    // 4.每次调用next方法返回一个包含Value和done属性的对象
+
+            //引入接口
+            [Symbol.iterator](){
+                //索引变量
+                let index=0;
+
+                let _this=this;
+                return {
+                    //next方法
+                    next:function(){
+                        //每次调用next方法返回一个包含Value和done属性的对象
+                        if(index<_this.stus.length){
+                            return {
+                            value:_this.stus[index],
+                            done:false
+                        }
+                        //下标自增
+                        index++;
+                        //返回结果
+                        return result;
+                        }else{
+                            return{
+                                value:undefined,
+                                done:true
+                            }
+                        }
+                    }
+                };
+            }
+        }
+
+        //遍历整个对象
+        for(let v of banji){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>
