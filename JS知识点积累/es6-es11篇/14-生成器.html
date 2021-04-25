@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+<body>
+<!-- 
+    生成器就是一个特殊的函数
+    异步编程 纯回调函数 node fs ajax mongodb
+
+ -->
+    <script>
+        function * gen(){
+
+            //函数代码的分隔符yield
+            yield '一只没有耳朵';
+
+            yield '一只没有尾巴';
+            
+            yield '真奇怪';
+        }
+
+        let iterator=gen();
+        //console.log(iterator);
+
+        //调用
+        iterator.next();
+    </script>
+</body>
+</html>
