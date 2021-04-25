@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>集合</title>
+</head>
+<body>
+    <script>
+        //声明一个set
+        let s=new Set();
+
+        //创建一个非空set
+        let s2=new Set(['大事儿',"小事儿",'好事儿',"坏事儿"]);
+
+        //元素个数-size
+        console.log(s2.size);
+
+        //添加新的元素-add
+        s2.add('喜事儿');
+        console.log(s2);
+
+        //删除元素-delete
+        s2.delete('坏事儿');
+        console.log(s2);
+
+        //检测是否有包含这个的东西-has
+        console.log(s2.has('好事儿'));
+
+        //清空-clear
+        s2.clear();
+        console.log(s2);
+    </script>
+    
+</body>
+</html>
