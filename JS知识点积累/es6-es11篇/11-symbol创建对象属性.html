@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>symbol创建对象属性</title>
+</head>
+<body>
+    <script>
+        //向对象中添加方法 up down
+        let game={
+            [Symbol('say')]:function(){
+                console.log('我可以发言');
+            }
+        };
+        let methods={
+            up:Symbol(),
+            down:Symbol()
+        };
+        game[methods.up]=function(){
+            console.log('我可以改变现状');
+        }
+        game[methods.down]=function(){
+            console.log('快速下降');
+        }
+        console.log(game);
+    </script>
+</body>
+</html>

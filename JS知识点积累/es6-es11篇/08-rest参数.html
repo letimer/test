@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+<body>
+    <script>
+          function date(){
+              console.log(arguments);
+          }
+          //输出结果为一个类数组arguments
+          date('白芷','当归','何首乌');
+
+
+         //rest参数的使用示例
+        //  function date(a,b,...args){
+        //      console.log(args);
+        //  }
+         //输出结果为一个长度为三的数组，数组里面的值为白芷，当归，何首乌
+        //  date('1','2','白芷','当归','何首乌');
+    </script>
+    
+</body>
+</html>

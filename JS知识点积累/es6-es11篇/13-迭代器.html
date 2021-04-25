@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+<body>
+    <!-- 
+        迭代器的工作原理：
+    1.创建一个指针对象，指向当前数据结构的起始位置
+    2.每一次调用对象的next方法，指针自动指向数据结构的第一个成员
+    3.接下来不断调用next方法，指针一直往后移动，直到最后一个成员
+    4.每次调用next方法返回一个包含Value和done属性的对象
+     -->
+
+
+    <script>
+        //迭代器是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署lterator接口，就可以完成遍历操作
+        //lterator接口:就是对象当中的属性
+        //声明一个数组
+        const xiyou=['唐僧','孙悟空','猪八戒','沙僧'];
+
+        //使用for...of遍历数组
+        // for(let v of xiyou){
+        //输出的结果为键值
+        //     console.log(v);
+        // }
+
+        //输出结果当中会有个symbol
+        //console.log(xiyou);
+
+        let iterator=xiyou[Symbol.iterator]();
+
+        //调用对象的next方法
+        //输出结果为四个对象，对象中包含value和done
+        //done是完成时，当value为undefined时，done的值为true
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+
+    </script>
+    
+</body>
+</html>

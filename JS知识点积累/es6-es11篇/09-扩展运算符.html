@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <script>
+        // //...能将数组转换为逗号分隔的参数序列
+        // const tfboys=['易烊千玺','王源','王俊凯'];
+        // function chunwan(){
+        //     console.log(arguments);
+        // }
+        // chunwan(...tfboys);
+
+        //1.数组的合并
+        const kuaizi=['王太利','小样'];
+        const feng=['玲花','曾毅'];
+        const hebing=[...kuaizi,...feng];
+        console.log(hebing);
+
+        //2.数组的克隆
+        const sanzhihua=['e','g','m'];
+        const sanyecao=[...sanzhihua];
+        console.log(sanyecao);
+    </script>
+</body>
+</html>
