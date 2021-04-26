@@ -3,7 +3,7 @@
 function Promise(executor){
     //添加属性
     this.PromiseState="pending";
-    this.PromiseResule=null;
+    this.PromiseResult=null;
 
     //如果直接使用this,则在下面的函数声明当中，this指向window
     const self=this;
@@ -16,7 +16,7 @@ function Promise(executor){
         //1.修改对象状态(promisestate)
         self.PromiseState="fulfilled";
         //2.设置对象结果值(promiseresult)
-        self.PromiseResule=data;
+        self.PromiseResult=data;
     }
 
     //reject函数声明
@@ -24,12 +24,21 @@ function Promise(executor){
         //1.修改对象状态(promisestate)
         self.PromiseState="rejected";
         //2.设置对象结果值(promiseresult)
-        self.PromiseResule=data;
+        self.PromiseResult=data;
     }
 
-    //同步调用【执行器函数】
-    executor(resolve,reject);
+    //获取抛出的错误
+    try{
+        //同步调用【执行器函数】
+        executor(resolve,reject);
+
+        //下面这个e是html文件当中抛出的error
+        }catch(e){
+            //修改promise对象状态为失败
+            reject(e);
+        }
 }
+
 //添加then方法
  Promise.prototype.then=function(onResolved,onRejected){
  }

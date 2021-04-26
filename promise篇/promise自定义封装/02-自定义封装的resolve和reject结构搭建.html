@@ -10,13 +10,21 @@
 <body>
     <script>
         let p=new Promise((resolve,reject)=>{
-            resolve('ok');
+           // resolve('ok');
+
+           //reject("error");
+
+           //抛出异常
+           throw "error";
         });
-        p.then(value=>{
-            console.log(value);
-        },reason=>{
-            console.warn(reason);
-        })
+        console.log(p);
+
+        
+        // p.then(value=>{
+        //     console.log(value);
+        // },reason=>{
+        //     console.warn(reason);
+        // })
     </script>
 </body>
 </html>
