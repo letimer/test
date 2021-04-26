@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> promise封装 | resolve与reject</title>
+    <script src="./03-promise.js"></script>
+</head>
+<body>
+    <script>
+        let p=new Promise((resolve,reject)=>{
+            //如果不封装状态改变一次，name下面会有两个改变状态
+           resolve('ok');
+
+           //reject('error');
+
+           //抛出异常
+           //throw "error";
+        });
+        console.log(p);
+
+        p.then(value=>{
+            console.log(value);
+        },reason=>{
+            console.warn(reason);
+        })
+    </script>
+</body>
+</html>
