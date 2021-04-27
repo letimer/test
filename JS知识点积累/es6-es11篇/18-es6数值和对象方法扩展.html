@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值和对象方法扩展</title>
+</head>
+<body>
+    <script>
+        //1.number.epsilon是js表示的最小精度
+        console.log(0.1+0.2);
+        function equal(a,b){
+            if(Math.abs(a-b)<Number.EPSILON){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        //2.二进制和八进制
+        //二进制
+        let b=0b1010;
+        //八进制
+        let o=0o77;
+        //十进制
+        let d=100;
+        //十六进制
+        let x=0xff;
+
+        //3.number.isFinite检测一个数值是否为有限数
+        console.log(Number.isFinite(100));
+
+        //4.number.isNaN检测一个数值是否为NAN
+        Number.isNaN(123);
+
+        //5.number.parseint,number.parsefloat字符串转为整数
+
+        //6.math.isInteger判断一个数是否为整数
+
+        //7.Math.trunc将数字的小数部分抹掉
+        console.log(Math.trunc(3.5));
+
+        //8.math.sign判断一个数到底是正数负数还是0
+
+
+        //1.object.is判断两个值是否完全相等
+        console.log(Object.is(120,120));
+
+        //2.object.assign对象的合并
+        const config1={
+            host:'localhost',
+            port:3306,
+            name:'root',
+            pass:'root',
+            text:"text"
+        }
+        const config2={
+            host:'localhost',
+            port:33060,
+            name:'guigu',
+            pass:'root'
+        }
+        //Object.assign第一个参数为模板，第二个将第一个覆盖，
+        console.log(Object.assign(config1,config2));
+
+        //3.设置原型对象
+        //Object.setPrototypeOf
+        const school={
+            name:"尚古古"
+        }
+        const cities={
+            xiaoqu:["北京","上海"]
+        }
+        Object.setPrototypeOf(school,cities);
+        console.log(school);
+    </script>
+</body>
+</html>
