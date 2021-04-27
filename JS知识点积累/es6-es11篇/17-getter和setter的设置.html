@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class中的getter和setter</title>
+</head>
+<body>
+    <script>
+        //get和set
+        class Phone{
+            get price(){
+                console.log("价格属性被读取了");
+                return 'iloveyou';
+            }
+
+
+            //该必须要有一个参数，不然报错
+            set price(newVal){
+                console.log("价格属性被修改了");
+            }
+        }
+
+        //实例化对象
+        let s=new Phone();
+
+        //console.log(s.price);
+        
+        //触发其setter
+        s.price="free";
+    </script>
+    
+</body>
+</html>

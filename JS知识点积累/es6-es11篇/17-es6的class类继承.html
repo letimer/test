@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类继承</title>
+</head>
+<body>
+    <script>
+        class Phone{
+            //构造方法
+            constructor(brand,price){
+                this.brand=brand;
+                this.price=price;
+            }
+
+            //父类的成员
+            call(){
+                console.log("我可以打电话");
+            }
+        }
+
+
+        // class声明类
+        // constructor定义构造函数初始化
+        // extends继承父类
+        // super调用父级构造方法
+        // static定义静态方法和属性
+        // 父类方法可以重写
+
+
+
+        //声明子类
+        // extends继承父类
+        class SmartPhone extends Phone{
+            //子类构造方法
+            constructor(brand,price,color,size){
+                 // super调用父级构造方法
+                super(brand,price);
+                this.color=color;
+                this.size=size;
+            }
+            photo(){
+                console.log("拍照");
+            }
+            playGame(){
+                console.log("玩游戏");
+            }
+
+
+            //子类重写父类方法，定义一个父类同名函数，会对父类中的函数进行重写
+                call(){
+                    console.log("可以视频通话");
+                }
+        }
+        const xiaomi=new SmartPhone("小米",999,"黑色","5.5inch");
+        console.log(xiaomi);
+        xiaomi.call();
+    </script>
+    
+</body>
+</html>

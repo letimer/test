@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象继承</title>
+</head>
+<body>
+    <script>
+    // class声明类
+    // constructor定义构造函数初始化
+    // extends继承父类
+    // super调用父级构造方法
+    // static定义静态方法和属性
+    // 父类方法可以重写
+
+        //手机
+        function Phone(brand,price){
+            this.brand=brand;
+            this.price=price;
+        }
+        Phone.prototype.call=function(){
+            console.log("可以打电话");
+        }
+
+        //智能手机
+        function SmartPhone(brand,price,color,size){
+            //通过call，改变this指向，使得其指向smartphone
+            Phone.call(this,brand,price);
+
+            //对子类独有的东西做处理
+            this.color=color;
+            this.size=size;
+        }
+
+        //设置子级构造函数的原型
+        SmartPhone.prototype=new Phone;
+        SmartPhone.prototype.constructor=SmartPhone;
+
+        //声明子类方法
+        SmartPhone.prototype.photo=function(){
+            console.log("我可以拍照");
+        }
+        SmartPhone.prototype.playGame=function(){
+            console.log("我可以玩游戏");
+        }
+
+        const chuizi=new SmartPhone('锤子',999,'黑色','5.5inch');
+        console.log(chuizi);
+    </script>
+    
+</body>
+</html>
