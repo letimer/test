@@ -37,12 +37,24 @@
         }
         
         //promise then测试
-        // const result=sendAjax("https://api.apiopen.top/getJoke").then(value=>{
+        //sendAjax("https://api.apiopen.top/getJoke").then(value=>{
         //     console.log(value);
         // },reason=>{
         //     console.log();
         // });
+
+        //async和await测试
+        async function main(){
+            //发送ajax请求
+            let result=await sendAjax("https://api.apiopen.top/getJoke");
+            //再次测试
+            let tianqi=await sendAjax("https://api.apiopen.top/getJoke");
+            console.log(result);
+            console.log(tianqi);
+        }
+        main();
+
+
     </script>
-    
 </body>
 </html>
