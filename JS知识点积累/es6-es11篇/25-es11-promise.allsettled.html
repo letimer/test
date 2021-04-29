@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise.allsettled</title>
+</head>
+<body>
+    <script>
+        //声明promise对象
+        const p1=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("商品数据-1");
+
+            },1000)
+        })
+        const p2=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("商品数据-2");
+
+            },1000)
+        })
+
+        //调用alSettled方法，其状态始终为成功，与promise.all方法类似，但是all方法的状态取决于是否全部返回成功
+        const result=Promise.allSettled([p1,p2]);
+        //输出结果为：状态为成功,结果为数组，数组里面两个对象
+        console.log(result);
+    </script>
+</body>
+</html>
