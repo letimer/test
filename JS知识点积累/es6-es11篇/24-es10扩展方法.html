@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es10扩展方法-对象扩展，数组方法扩展，字符串方法扩展</title>
+</head>
+<body>
+    <script>
+//对象扩展方法
+    //创建二维数组
+    //1.Object.fromEntries把数组转换为对象
+        const result=Object.fromEntries([
+            ['name','尚硅谷'],
+            ['xueke','java','大数据']
+    ])
+    //输出结果为键值形式
+    console.log(result);
+
+
+    //2.map
+    const m=new Map();
+    m.set('name','guigu')
+    const result=Object.fromEntries(m);
+    console.log(result);
+
+    //3.trimStart和trimEnd
+    //trim清除字符
+    //trimStart清除左侧的空格字符，trimEnd清除右侧的空格字符
+    let str='  iloveyou   ';
+    console.log(str);
+    console.log(str.trimStart());
+    console.log(str.trimEnd());
+    console.log(str.trim());
+
+//数组扩展方法
+    //1.flat  平,flat(参数)——数字1表示解开的深度,例子：一个三维数组转为一维数组，则其深度为2，该参数的默认值为1
+    //将多维数组转化为低维数组
+    const arr=[1,2,[3,[4,5],6]]
+    console.log(arr);
+    console.log(arr.flat());
+    //2.flatMap,类似于map
+    const arr=[1,2,3,4];
+    const result=arr.map(item=>item*10);
+    console.log(result);
+
+
+// Symbol.prototype.description扩展
+    //创建symbol
+    let s=Symbol("尚硅谷");
+    console.log(s.description);
+    </script>
+</body>
+</html>
