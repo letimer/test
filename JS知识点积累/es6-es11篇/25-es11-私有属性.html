@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私有属性</title>
+</head>
+<body>
+    <script>
+        class Person{
+            //公有属性
+            name;
+            //私有属性
+            #age;
+            #weight;
+            //构造方法
+            constructor(name,age,weight){
+                this.name=name;
+                this.#age=age;
+                this.#weight=weight;
+            }
+            intro(){
+                console.log(this.name);
+                console.log(this.#age);
+                console.log(this.#weight);
+            }
+        }
+
+        //实例化,在下列代码中输出不了结果
+         const girl=new Person('晓红',18,'45kg');
+        // console.log(girl.name);
+        // console.log(girl.#weight);
+        // console.log(girl.#age);
+
+        //在类内部添加了intro之后再来调用试试
+        girl.intro();
+    </script>
+</body>
+</html>
