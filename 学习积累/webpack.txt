@@ -251,3 +251,28 @@ loader主要用于转换某些类型的模块，它是一个转换器，plugin�
 
 步骤2：在webpack.config.js中的plugins中配置插件
 
+7.2基本的插件plugin使用
+7.2.1添加版权的plugin——BannerPlugin，属于webpack自带的插件，所以在文件中配置如下所示：
+
+
+
+在bundle.js中展示效果：
+
+
+
+7.2.2打包html的plugin——HtmlWebpackPlugin
+
+目前，我们的Index.html文件是存放在项目的根目录下面的，在真实发布项目时，发布的是dist文件夹中的内容，但是dist文件夹中如果没有index.html文件，那么打包的js等文件也就没有意义了，所以如果需要把Index.html文件打包到dist文件夹中，这个时候就可以使用该plugin了。
+
+作用：自动生成一个index.html文件（指定模板来生成），将打包的js文件，自动通过script标签插入到body当中。
+
+使用步骤：
+
+1.安装：npm install html-webpack-plugin --save-dev
+
+2.进行配置：另外，我们需要删除之前在output中添加的publicPath属性，否则插入的script标签中的src可能会有问题。
+
+
+
+dist文件夹下的打包好的Index.html文件
+
