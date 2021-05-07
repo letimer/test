@@ -1,7 +1,6 @@
 webpack内容概述
 一.认识webpack
 什么是webpack?
-
 官方解释：
 
    本质上来说，webpack是一个现代的javascript应用的静态模块打包工具
@@ -18,24 +17,9 @@ webpack模块化理念：webpack其中一个核心就是让我们可能进行模
 安装webpack首先需要安装node.js,node.js自带了软件包管理工具npm
 
 1.查看自己的node版本
-
-
-
 2.全局安装webpack(指定版本号为3.6.0,因为vue.cli2依赖该版本)
 
-
-
 安装好webpack之后查看其版本
-
-
-
-注意：可能出现下列情况
-
-
-
-解决方案：点击“开始”——》找到windows powershell——》找到该文件夹下的windows powershell右键以管理员身份打开——》再按照以下输入运行并且选择Y
-
-
 
 三.webpack的使用起步
 webpack的使用示例：
@@ -64,18 +48,9 @@ webpack ./src/main.js  ./dist/bundle.js     (解释为：将src中的main.js
 
 四.webpack的配置
 webpack.config.js配置:由自己创建，文件内部代码如下
-
-
-
 package.json配置：包描述文件，由npm init自动生成，在下列代码中加入"build":"webpack"，可以使得直接终端输入npm run build就相当于直接运行webpack...   ...
 
-
-
-
-
 注意：因为之前在安装webpack的时候是全局安装，所以可能会版本冲突，因此需要本地安装一下webpack，会在json文件中生成依赖
-
-
 五.loader的使用
 loader是webpack中一个非常核心的概念
 
@@ -97,7 +72,6 @@ loader的使用过程：
 npm install --save-dev css-loader
 
 
-
 2,在webpack.config.js中的moudles关键字下进行配置
 
 
@@ -106,11 +80,7 @@ npm install --save-dev css-loader
 
 
 
-
-
 还要在入口文件当中添加一个对css文件的依赖:require("xxx.css");
-
-
 
 5.2webpack-less文件的处理
 如果我们希望在项目当中使用Less,scss,stylus来写样式，webpack是否可以帮助我们呢？
