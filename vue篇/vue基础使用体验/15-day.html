@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父单项数据流</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <html-a v-on:child-event="parentFn" ></html-a>
+    </div>
+    <script>
+        //创建一个Vue对象
+        //父组件
+        const app=new Vue({
+            el:"#app",
+            data:{
+                message:'hello vue!'
+            },
+            methods:{
+                parentFn(name){
+                    this.message=name;
+                    console.log("父组件"+name);
+                }
+            },
+            //组件
+            components:{
+                "html-a":{
+                    data(){
+                        return {
+                            name:"我是子组件"
+                        }
+                    },
+                    template:`
+                    <div>
+                        <button v-on:click="childClick(name)">{{name}}</button>
+                        </div>`,
+                    methods:{
+                       childClick(name){
+                           //child-event自定义事件名
+                        this.$emit('child-event',name);
+                    }
+                }
+            }
+        }
+        })
+    </script>
+</body>
+</html>

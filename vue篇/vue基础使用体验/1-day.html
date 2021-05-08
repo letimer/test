@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <button v-on:click="alert">点击</button>
+        <div v-html="raWhtml"></div>
+        <div v-bind:class="color">Vue3</div>
+    </div>
+    <script>
+        const dataObj={
+                message:"hello",
+                raWhtml:'<span style="color:red">Vue2</span>',
+                color:'red'
+            };
+            //创建一个vue对象
+            const app=new Vue({
+                el:"#app",
+                data:dataObj
+            })
+    </script>
+</body>
+</html>

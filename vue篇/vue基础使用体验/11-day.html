@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <html-a text="world"></html-a>
+        <html-a v-bind:text=message></html-a>
+    </div>
+    <script>
+        const dataObj={
+            message:'he（父组件）llo ',
+        };
+
+        //局部组件
+        const childComponent={
+            data(){
+                return {
+                    message:'独立子组件'
+                }
+            },
+            template:`<div>{{text}}{{message}}</div>`,
+             props:['text']
+        }
+        //创建一个Vue对象
+        //父组件
+        const app=new Vue({
+            el:"#app",
+            data:dataObj,
+            components:{
+                'html-a':childComponent
+            },
+            //计算属性
+            computed:{
+
+            },
+            //方法
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

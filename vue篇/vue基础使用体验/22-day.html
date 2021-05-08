@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="input.name">{{value}}|{{value2}}
+    </div>
+    <script>
+        const app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello',
+                input:{
+                    name:'',
+                    age:100
+                },
+                value:'',
+                value2:''
+            },
+            methods:{
+                getVal(obj){
+                    this.value=obj.name
+                },
+                getVal2(obj){
+                    this.value2=obj.age
+                }
+            },
+            watch:{
+             input:[{ handler:'getVal',
+                        deep:true,
+                        //默认有初始值
+                        immediate:true},
+                    {
+                        handler:'getVal2',           
+                        deep:true,
+                        //默认有初始值
+                        immediate:true
+                    }]
+            }
+        })
+    </script>
+    
+</body>
+</html>

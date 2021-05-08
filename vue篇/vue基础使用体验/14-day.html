@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父单项数据流</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <html-a
+        v-bind:child-num=num
+        v-bind:child-age=age
+        v-bind:child-str=str
+        v-bind:child-arr=arr
+        v-bind:child-obj=obj
+        ></html-a>
+    </div>
+    <script>
+        //创建一个Vue对象
+        //父组件
+        const app=new Vue({
+            el:"#app",
+            data:{
+                num:100,
+                age:'20',
+                str:'abc',
+                arr:[1,2,3,4,5],
+                obj:{
+                    name:'MR.DENG'
+                }
+            },
+            //计算属性
+            computed:{
+            },
+            //组件
+            components:{
+                "html-a":{
+                    data(){
+                        return {
+                            message:'我是子组件',
+                        }
+                    },
+                    template:`
+                    <div>{{childNum}}
+                        {{childAge}}
+                        {{childStr}}
+                        {{childArr}}
+                        {{childObj}}
+                        </div>`,
+                    props:{
+                        childNum:Number,
+                        childAge:[Number,String],
+                        childStr:{
+                            type:String,
+                            default:'no str'
+                        },
+                        childArr:{
+                            type:Array,
+                            default(){
+                                return [];
+                            }
+                        },
+                        childObj:{
+                            type:Object,
+                            default(){
+                                return 
+                                name:'no name'
+                            }
+                        }
+                    }
+            }
+        },
+            //方法
+            methods:{
+            }
+        })
+    </script>
+</body>
+</html>
