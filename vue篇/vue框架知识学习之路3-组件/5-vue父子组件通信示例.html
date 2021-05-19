@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的父子组件通信实例</title>
+</head>
+<body>
+    <div id="app">
+        这里传值changeTotal括号可要可不要，会默认传入子组件传入过来的值（把它相当于event）
+        <child-cpn @increment="changeTotal" @decrement="changeTotal"></child-cpn>
+        <h2>点击次数：{{total}}</h2>
+    </div>
+    <template id="childCpn">
+        <div>
+            <button @click="increment">+1</button>
+            <button @click="decrement">-1</button>
+        </div>
+    </template>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                total:0
+            },
+            methods:{
+                changeTotal(counter){
+                this.total=counter
+            }
+            },
+            components:{
+                "child-cpn":{
+                    template:"#childCpn",
+                    data(){
+                        return{
+                            counter:0
+                        }
+                    },
+                //子组件的方法
+                methods:{
+                    increment(){
+                        this.counter++;
+                        //传递的是该子组件当中的counter,具体的某个数值，加上this
+                        this.$emit("increment",this.counter)
+                    },
+                    decrement(){
+                        this.counter--;
+                        this.$emit("decrement",this.counter)
+                    }
+                }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

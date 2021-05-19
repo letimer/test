@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue的组件化</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+          组件化思想：
+            它提供了一种抽象，让我们可以开发出一个个独立可复用的小组件来构造我们的应用
+            任何的应用都会被抽象成一颗组件树
+          组件化思想的应用：
+            有了组件化的思想，我们在之后的开发中就要充分的利用它，尽可能的将网页拆分成一个个小的，可以复用的组件
+            这样让我们的代码更加方便组织和管理，并且扩展性也更强
+
+            如果我们将一个页面中所有的处理逻辑全部放在一起，处理起来
+            会变得非常复杂，而且不利于后续的管理以及扩展
+            将一个页面拆分成一个个晓得功能块，每个功能块完成属于自己
+            的这部分独立的功能，那么之后整个页面的管理和维护就变得非常容易了
+        
+          组建的使用步骤
+            1.创建组件构造器    vue.extend()方法创建组件构造器
+            2.注册组件          vue.component()方法注册组件
+            3.使用组件          vue实例的作用范围内使用组件
+        -->
+        <html-a></html-a>
+    </div>
+    <script>
+        // 语法糖注册全局组件示例
+        //语法糖注册局部组件也类似，只是对象放在实例的components后面罢了
+
+
+        // Vue.component("html-a",{
+        //     data(){
+        //         return {
+        //             message:"我是组件"
+        //         }
+        //     })
+        // const app=new Vue({
+        //     el:"#app",
+        //     data:{
+        //     }
+        // })
+        
+
+        //1.创建组件构造器
+        const child=Vue.extend({
+            data(){
+                return {
+                    message:"我是组件"
+                }
+            },
+            //template代表我们自定义组件的模板，模板需要一个根元素
+            //该模板就是在使用到组建的地方，要显示的html代码
+            template:`<div>
+                           {{message}}
+                      </div>`,
+        })
+
+        //注册组件
+        Vue.component("html-a",child)
+        const app=new Vue({
+            el:"#app",
+            data:{
+            }
+        })
+    </script>
+</body>
+</html>
