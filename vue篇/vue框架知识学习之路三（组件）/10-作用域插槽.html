@@ -7,25 +7,27 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>vue的作用域插槽</title>
 </head>
-<!-- 作用域插槽
-父组件替换插槽的内容，但是内容由子组件来提供-->
+<!-- 作用域插槽——父组件替换插槽的标签，但是内容由子组件来提供-->
 <body>
     <div id="app">
-        <cpn></cpn>
         <cpn>
-            <!-- 目的是为了获取子组件中的planguages -->
             <template slot-scope="slot">
-                <!-- <span v-for="item in slot"></span> -->
-            </template>
+                <li>{{slot.value}}</li>
+             </template>
+        </cpn>
+        <cpn>
+            <!-- 目的是为了获取子组件中的planguages
+            自定义一个插槽slot -->
+             <template slot-scope="slot">
+               <h1>{{slot.value}}</h1>
+            </template> 
         </cpn>
     </div>
     <template id="cpn">
         <div>
-            <slot :data="pLanguages">
                 <ul>
-                    <li v-for="item in pLanguages">{{item}}</li>
+                    <slot v-for="value in pLanguages" :value=value></slot>
                 </ul>
-            </slot>
         </div>
     </template>
     <script>
@@ -46,5 +48,34 @@
             }
         })
     </script>
+    <!-- <div id="root">
+        <child>
+            <template slot-scope="props">
+                <li>{{props.value}}</li>
+            </template>
+        </child>
+        <child>
+            <template slot-scope="props">
+                <h1>{{props.value}}</h1>
+            </template>
+        </child>
+    </div>
+    <script>
+        Vue.component('child',{
+            data: function(){
+                return {
+                    list:[1,2,3,4]
+                }
+            },
+            template: `<div>
+                            <ul>
+                                <slot v-for="value in list" :value=value></slot>
+                            </ul>
+                        </div>`
+        })
+        var vm=new Vue({
+            el: '#root'
+        })
+    </script> -->
 </body>
 </html> 
