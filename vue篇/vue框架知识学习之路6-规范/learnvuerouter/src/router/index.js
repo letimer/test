@@ -5,6 +5,7 @@ import Vue from 'vue'
 
 import Home from "../components/Home"
 import About from "../components/About"
+import User from "../components/User"
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -12,39 +13,34 @@ Vue.use(VueRouter)
 //将routes单拎出来，方便编写和阅读
 const routes=[
   {
+    //缺省路由，相当于默认时的路径
+    path:'',
+    //使得路径重定向
+    redirect:'/home'
+  },
+  {
     path:'/home',
     component:Home
   },
   {
     path:'/about',
     component:About
+  },
+  {
+    path:'/user/:abc',
+    component:User
   }
 ]
 // 2.创建VueRouter对象
 const router=new VueRouter({
   // 配置路径和组件之间的映射关系
-  routes
+  routes,
+  mode:'history',
+  linkActiveClass:'active'
 })
 
 // 3.将router对象传入到Vue实例,将其导出
 export default router
 
-
-
-//该文件中原始的代码如下
-// import Vue from 'vue'
-// import VueRouter from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
-// //安装插件
-// Vue.use(VueRouter);
-// export default new VueRouter({
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'HelloWorld',
-//       component: HelloWorld
-//     }
-//   ]
-// })
 
 
