@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 // 通过Vue.use（插件）,安装插件，因为没有Vue,所以导入import Vue from 'vue'
 import Vue from 'vue'
 
-import Home from "../components/Home"
-import About from "../components/About"
-import User from "../components/User"
-// const Home=()=>import("../components/Home.vue")
-// const About=()=>import("../components/About.vue")
-// const User=()=>import("../components/User.vue")
+// import Home from "../components/Home"
+// import About from "../components/About"
+// import User from "../components/User"
+const Home=()=>import("../components/Home")
+const HomeMessage=()=>import("../components/HomeMessage")
+const HomeNews=()=>import("../components/HomeNews")
+const About=()=>import("../components/About")
+const User=()=>import("../components/User")
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -23,7 +25,18 @@ const routes=[
   },
   {
     path:'/home',
-    component:Home
+    component:Home,
+    children:[
+      {
+        //注意，子路由的路径映射时这里不需要加/
+        path:'homenews',
+        component:HomeNews
+      },
+      {
+        path:'homemessage',
+        component:HomeMessage
+      }
+    ]
   },
   {
     path:'/about',
