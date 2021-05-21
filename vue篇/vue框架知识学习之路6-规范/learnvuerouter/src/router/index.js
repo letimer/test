@@ -6,6 +6,9 @@ import Vue from 'vue'
 import Home from "../components/Home"
 import About from "../components/About"
 import User from "../components/User"
+// const Home=()=>import("../components/Home.vue")
+// const About=()=>import("../components/About.vue")
+// const User=()=>import("../components/User.vue")
 
 // 1.安装插件
 Vue.use(VueRouter)
