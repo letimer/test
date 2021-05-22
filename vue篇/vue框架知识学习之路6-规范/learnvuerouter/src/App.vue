@@ -27,7 +27,7 @@ export default {
   },
   methods:{
     // linkToHome(){
-    //   this.$router.push("/home")
+    //   this.$router.push("'/home/'+userId")
     // },
     // linkToAbout(){
     //   this.$router.push("/about")

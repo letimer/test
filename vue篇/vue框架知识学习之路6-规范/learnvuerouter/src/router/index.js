@@ -43,7 +43,7 @@ const routes=[
     component:About
   },
   {
-    path:'/user/:abc',
+    path:'/user/:id',
     component:User
   }
 ]
@@ -52,6 +52,7 @@ const router=new VueRouter({
   // 配置路径和组件之间的映射关系
   routes,
   mode:'history',
+  //给正在被点击的组件添加一个类，以方便定义样式
   linkActiveClass:'active'
 })
 
