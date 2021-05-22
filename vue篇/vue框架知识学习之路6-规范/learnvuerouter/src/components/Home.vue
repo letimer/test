@@ -10,7 +10,16 @@
 
 <script>
 export default{
-    name:"Home"
+    name:"Home",
+    data(){
+        return {
+            message:'你好哇'
+        }
+    },
+    created(){
+        console.log('created');
+         document.title="首页"
+    }
 }
 </script>
 <style scoped>
