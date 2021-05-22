@@ -52,6 +52,10 @@ const routes=[
     component:About,
     meta:{
       title:'关于'
+    },
+    beforeEnter:(to,from,next)=>{
+      console.log('about beforeEnter');
+      next()
     }
   },
   {
@@ -71,12 +75,19 @@ const router=new VueRouter({
   linkActiveClass:'active'
 })
 
-//前置狗子，相当于一个回调函数
-router.beforeEach((to,from,next)=>{
+//导航守卫1：前置钩子，相当于一个回调函数，需要主动调用next（）函数
+  router.beforeEach((to,from,next)=>{
   //从from跳转到to
   document.title=to.matched[0].meta.title,
   console.log(to);
+  console.log('+++');
   next()
+})
+
+//导航守卫2：后置钩子
+router.afterEach((to,from)=>{
+  console.log('---');
+
 })
 
 // 3.将router对象传入到Vue实例,将其导出
