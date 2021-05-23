@@ -1,21 +1,37 @@
 <template>
   <div id="app">
-    <div id="tab-bar">
-      <div>首页</div>
-      <div>分类</div>
-      <div>购物车</div>
-      <div>我的</div>
-    </div>
+    <tab-bar>
+      <tab-bar-item>
+        <img slot="item-icon" src="./assets/img/tabbar/Home.png" alt="">
+        <div slot="item-text">首页</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <img slot="item-icon" src="./assets/img/tabbar/Category1.png" alt="">
+        <div slot="item-text">分类</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <img slot="item-icon" src="./assets/img/tabbar/Cart1.png" alt="">
+        <div slot="item-text">购物车</div>
+      </tab-bar-item>
+      <tab-bar-item>
+        <img slot="item-icon" src="./assets/img/tabbar/User1.png" alt="">
+        <div slot="item-text">我的</div>
+      </tab-bar-item>
+    </tab-bar>
   </div>
 </template>
 
 <script>
-
+import TabBar from "./components/tabbar/TabBar"
+import TabBarItem from "./components/tabbar/TabBarItem"
 export default {
   name: 'App',
-  components: {  }
+  components: { 
+     TabBar,
+     TabBarItem
+   }
 }
 </script>
-
 <style>
+    @import "./assets/css/base.css";
 </style>
