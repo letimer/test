@@ -1,12 +1,18 @@
 <template>
     <div class="tab-bar-item">
-        <slot name="item-icon"></slot>
-        <slot name="item-text"></slot>
+        <div v-if="!isActive"><slot v-if="!isActive" name="item-icon"></slot></div>
+        <div v-else><slot name="item-icon-active"></slot></div>
+        <slot :class="{active:isActive}" name="item-text"></slot>
     </div>
 </template>
 <script>
 export default {
-    name:'TabBarItem'
+    name:'TabBarItem',
+    data(){
+        return{
+            isActive:false
+        }
+      }
     }
 </script>
 <style scoped>
