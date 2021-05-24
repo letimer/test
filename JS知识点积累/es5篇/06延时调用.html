@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num=1;
+
+        /*开启一个定时器
+        setInterval(function(){
+            console.log(num++);
+        },3000)
+        */
+
+        /*
+        延时调用，延时调用一个函数补马上执行，而是隔一段时间以后再执行
+        */
+      var timer= setTimeout(function(){
+           console.log(num++);
+       },100);
+       clearTimeout(timer);
+    </script>
+</head>
+<body>
+</body>
+</html>

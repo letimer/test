@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       //当js解析或者运行时，一旦发生错误，引擎就会抛出一个错误对象
+       var err=new Error("出错了");
+       document.write(err.message+"<br>");
+       if(err.name){
+           document.write(err.name+':'+err.message+"<br>");
+       }//结果为error:出错了
+       function throwit(){
+           throw new Error("");
+       }
+       function catchit(){
+           try{
+               throwit();
+           }catch(e){
+               document.write(e.stack+"<br>");
+           }
+       }
+       catchit();
+       
+       
+       //console的静态控制方法
+       console.log('hello world');
+       //hello world
+
+       console.log('%s+%s=%s',1,1,2);
+       console.log("%s+%s",1,1,"=2");
+
+       console.log({foo:"bar"});
+
+       //console.table()对于某些复合类型的数据，console。log方法可以将其转为表格显示
+       var lanuages=[
+           {name:"javascript",fileExtension:'.js'},
+           {name:"javascript",fileExtension:'.js'},
+           {name:"javascript",fileExtension:'.js'}
+       ];
+     console.table(lanuages);
+     var lanuages={
+         java1:{name:"javascript",fileExtension:'.js'},
+     };
+     console.table(lanuages);
+
+
+     //function对象实现函数指针
+     var vSum=new Function("n1","n2","return n1+n2");
+     document.write("vSum(1,9)="+vSum(1,9)+"<br>");
+     function vSumSum(fn,n1,n2){
+         return fn(n1,n2);
+     }
+     document.write("vSumSum(vSum,1,9)="+vSumSum(vSum,1,9)+"<br>");
+
+     //function对象方法,toString()实现函数源代码的输出
+     function MessageBox(){
+     }
+     document.write("MessageBox.toSting()="+MessageBox.toString()+"<br>");
+     function Sum(n1,n2){
+         return n1+n2;
+     }
+     document.write("Sum.toString()="+Sum.toString()+'<br>');
+
+     //javaScript常规函数eval()
+     eval("x=3;document.write('x='+eval(3)+'<br>');")
+     eval("y=3;document.write('y='+eval(3)+'<br>');")
+     eval("document.write('x*y='+eval(x*y)+'<br>');")
+    </script>
+</body>
+</html>

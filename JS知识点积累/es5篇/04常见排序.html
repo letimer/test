@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <script>
+        window.onload=function(){
+            /*
+            1.冒泡排序
+            重复的走访过要排序的元素列，依次比较相邻的元素，如果他们的顺序（如：
+            从小到大，首字母A-Z）错误地就把他们交换过来，走访元素的工作是重复的进行直到没有相邻元素需要交换
+            */
+
+            function  bubbleSort(data){
+                var temp=0;
+                for(var i=data.length;i>0;i--){
+                    for(var j=0;j<i-1;j++)
+                    {
+                        if(data[j]>data[j+1])
+                        {
+                            temp=data[j];
+                            data[j]=data[j+1];
+                            data[j+1]=temp;
+                        }
+                    }
+                }
+                return data;
+            }
+        }
+    </script> 
+
+</body>
+</html>

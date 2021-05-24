@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建一个数组,去除数组当中的重复数字
+        var arr=[1,2,3,3,2,1,3,4,2,5]
+        //动态规划，获取数组当中的每一个元素，进行一一比对
+        for(var i=0;i<arr.length;i++)
+        {
+            //document.write(arr[i]);
+            for(var j=i+1;j<arr.length;j++)
+            {
+                //document.write(arr[j]);
+                if(arr[i]==arr[j])
+                {
+                    //如果相等，则证明出现了相同的元素
+                    arr.splice(j,1);
+                    i--;//阻止使得1,2,2,3这种情况出现
+                }
+            }
+        }
+        document.write(arr+"</br>");
+        //concat()的用处是使得多个数组连接起来，并且不改变原数组，除了连接数组，还能连接字符
+        var arr=["孙悟空","猪八戒"];
+        var arr2=["唐僧","沙和尚"];
+        var arr3=["铁扇公主","玉兔精"];
+        var result1=arr.concat(arr2);
+        document.write(result1+"</br>");
+        var result1=arr.concat(arr2,arr3);
+        document.write(result1+"</br>");
+        var result1=arr.concat(arr2,arr3,"Lisa");
+        document.write(result1+"</br>");
+
+        /*
+        *join()
+        *该方法不会对原数组产生影响，而是将转换后的字符串作为结果返回
+        *该方法可以将数组转换为一个字符串
+        *在join()中可以指定一个字符作为参数，这个字符将会成为数组中元素的连接符
+        */
+       result=arr.join("");
+       document.write(result+"</br>");
+       document.write(typeof result+"</br>");
+
+       /*
+       *reverse()该方法用来反转数组,会改变数组
+       *sort()给原数组排序，会影响数组，按unicode编码进行排序
+       *（对于我们纯数字的数字，也会对其按照unicode进行排序）
+       */
+       var arr=[19,101,12,3,4,5,6,7,8,11];
+       arr.sort(function(a,b){
+            if(a>b){
+               return 1;
+           }else if(a<b){
+               return -1;
+           }else{
+               return 0;
+           }
+       })
+       document.write(arr+"<br>");
+
+
+       /*
+       *call()和apply()
+       *-这两个方法都是函数对象的方法，需要通过函数对象来调用
+       *在调用call()和apply()可以将一个对象指定为第一个函数
+       *此时这个对象将会成为函数执行时的this
+       */
+      var obj={
+          name:"obj",
+          sayName:function(){
+              alert(this.name);
+          }
+      };
+      var obj2={
+          name:"obj2"
+      };
+     // obj.sayName.apply(obj2);
+
+
+     /*
+     *在调用函数时，浏览器每次都会传递进两个隐含的参数
+     *1.函数的上下文对象this
+     *2.封装实参的对象arguments
+       -arguments是一个类数组对象，它也可以通过索引来操作数据，也可以获取长度
+       -在调用函数时，我们所传递的实参都会在arguments中保存
+       -arguments.length可以获取实参的长度
+       arguments[0] 表示第一个实参
+       arguments[1] 表示第二个实参
+       arguments.callee,是arguments的一个属性，这个属性对应一个函数对象，就是当前正在指向的函数的对象
+     */
+    function fun(){
+        //document.write(Array.isArray(arguments));
+        console.log(arguments.length);
+        console.log(arguments.callee);//结果为正在指向的函数的对象
+    }
+    // fun("hello",true);
+    var d=new Date();
+    console.log(d);
+    var d3=new Date("12/05/2016  11:10:30");
+    console.log(d3);
+    var a1=d3.getMonth();
+    console.log(a1);
+    //var a2=d.
+    var start=Date.now();
+    for(var i=0;i<10;i++){
+        console.log(i);
+    }
+    var end=Date.now();
+    console.log("执行了"+(end-start)+"毫秒");
+
+
+    /*Math
+    *不是一个构造函数，所以不能var a=new Math()
+    它属于一个工具类而不是不用创建对象，它里面封装了数学运算相关的属性和方法
+    ——Math.abc(number);
+    输出一个数的绝对值
+    ——Math.ceil()对一个数进行向上取整，小数位只要有值就自动进一
+    ——Math.floor()对一数值进行向下取整，类似于Parseint（），
+    *但是它不能像parseint一样可以对类似于123.1px的数值一样进行操作
+    ——Math.round()相当于四舍五入取整
+    ——Math.random()可以用来生成0-1之间的一个随机数
+   console.log(Math.abs(-1));
+   console.log(Math.ceil(1.1));
+   console.log(Math.floor("1.99px"));
+   console.log(parseInt("1.1px"));
+   console.log(Math.round(1.9));
+   console.log(Math.random());
+   */
+
+
+   /*
+   *基本数据类型
+   String Number Boolean Null  Unidefined
+   引用数据类型
+   Object
+   在JS当中为我们提供了三个包装类，通过这三个包装类可以将基本数据类型的数据转换为对象
+   String()
+       -可以将基本数据类型字符串转换为String对象
+    Number()
+       -可以将基本数据类型字符串转换为Number对象
+    Boolean()
+       -可以将基本数据类型字符串转换为boolean对象
+   */
+  var str="elloHHAtguigu";
+  /*
+  *在底层字符串是以字符组的形式保存的
+  *length属性  可以用来获取字符串的长度
+   charAt()可以返回字符串中指定位置的字符,里面填写字符所在number，返回所在位置的字符
+  *split()
+  -可以将一个字符串拆分为数组
+  -参数
+  -需要一个字符串作为参数，将会根据该字符串去拆分数组
+  如果传递一个空串，则会将每一个字符都拆分为数组中的一个元素
+  *toUpperCase()将一个字符转换为大写并返回
+  */
+  console.log(str.length);
+  var result=str[7];//此时代表着str[7]这个位置的字符
+  console.log("result:"+result);
+  console.log(String.fromCharCode(0x2692));
+  console.log(str.indexOf("H",1));//表示从str[1]位置开始查找H这个字符
+  console.log(str.substring(1,3));//表示从[1]这个位置截取到[3]，包括开始位置，不包括结束位置
+  console.log(str.substr(1,3));//表示从[1]这个位置截取三个
+
+  var str1="abc,bcd,efg,hij";
+  result=str1.split(",");
+  document.write(result.length+"</br>");
+  document.write(result[1]+"</br>");
+
+  var str2="abcdef";
+  document.write(str2.toUpperCase()+"</br>");
+  document.write(str2.toLowerCase()+"</br>");
+ //document.write(str2.charAt(5)+"</br>");
+
+
+ /*
+ 正则表达式，用于定义一些字符串的规则
+ ——计算机可以根据正则表达式，来检查一个字符串是否符合规则
+ ——获取字符串中符合规则的内容提取出来
+ -admin
+1.创建正则表达式的对象
+语法：var 变量=new RegExp("正则表达式","匹配模式")
+可以传递一个匹配模式作为第二个参数。
+  i  忽略大小写
+  g  全局匹配模式
+定义好规则之后，使用test来测试规则
+*
+2.使用字面量来创建正则表达式更加简单，但是用构造函数更加灵活
+*语法：var 变量=/正则表达式/匹配模式
+或者   var 变量=/[正则表达式]/匹配模式,[]中也是或的关系
+[A-Z]任意大写字母
+[A-z]任意字母
+或者   var 变量=/ | | | |/匹配模式
+
+var reg=new RegExp("a","i");
+var str3="aADADADDA";
+var result=reg.test(str3);
+console.log(result);
+document.write(reg.test("A"));
+reg=/a/i;
+document.write(reg.test("A"));
+*/
+//检查一个字符串当中是否有ABC或者ADC或者AEC的简便写法/A[BDE]C/
+///[^E]/表示除了E有东西就行，比如空格也算是个东西
+reg=/[^E]/
+document.write(eg.test(" E"));
+var str4="hello hello aec afc";
+result=str4.search(/a[ef]c/);
+document.write(result+"</br>");
+//match会将匹配到的内容封装到一个数组中返回，即使只调查到一个结果
+var str5="1a2b3c4d5e6fABC";
+document.write(str5.match(/[A-z]/)+"</br>");
+//reg=/a{3}/表示正则aaa
+//reg=/(ab){3}/表示正则ababab
+//reg=/ab{1,3}c/表示中间的b地数量为1-3
+/*创建一个正则表达式，用来检查一个字符是否是一个合法手机号
+1.手机号以1开头
+2.第二位3-9任意数字
+3.三位以后任意数字9个
+^1   [3-9]  [0-9]{9}$
+*/
+var phone="13345678901";
+var phonereg=/^1[3-9][0-9]{9}$/;
+document.write(phonereg.test(phone));
+
+var str6="       hello der 2021.1.4      ";
+console.log(str6);
+str6=str6.replace(/\s/g,"");
+console.log(str6);
+//不足之处，去掉了所有的空格，改进，仅仅去除开头的或者结尾的空格
+var str7="       hello der 2021.1.4      ";
+console.log(str7);
+str7=str7.replace(/^\s*/,"");
+console.log(str7);
+str7=str7.replace(/\s*$/,"");
+console.log(str7);
+str7=str7.replace(/\s*$|^\s*/g,"");
+//如果不加上全局匹配，那么当它只需要满足一个条件时，就不会再去执行其它的条件满足时需要的操作
+console.log(str7);
+
+ /*
+        *电子邮件，格式为hello .der @abc.com.cn
+        *
+        *电子邮件简要格式：   任意字母数字下划线  .  @  任意字母数字 . 任意字母(2-5位) . 任意字母(2-5位)
+        *
+        *\w{3,}   (\.\w+)*   @   [A-z 0-9]+   (\.[A-z]{2,5}){1,2}
+        * 
+        * 
+        * *
+        */
+        var emailReg=/^\w{3,}(\.\w+)*@[A-z 0-9]+(\.[A-z]{2,5}){1,2}$/;
+       var email="abc@abc.com";
+       console.log(emailReg.test(email));
+
+</script>
+</body>
+</html>

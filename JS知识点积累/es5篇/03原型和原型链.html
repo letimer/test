@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            /*
+            引用类型object,function,date,regex,array等都具有几个特性与规则
+            1.具有对象特性，即可自由扩展属性
+            2.引用类型都有隐式原型_proto_属性，属性值是一个普通的对象
+            3.引用类型的隐式原型的属性值指向它的构造函数的显式原型prototype的属性值
+            4.当你试图得到某个对象的属性，而这个对象不存在这个属性时，它就会去
+            隐式原型（或者他的构造函数的prototype的显式原型中寻找）
+            **/
+
+            //1.可自由扩展属性
+            var obj={};
+            var arr=[];
+            const fn=function(){}
+            obj.num=1;
+            arr.num=1;
+            fn.num=1;
+            console.log(obj.num);
+            console.log(arr.num);
+            console.log(fn.num);
+
+
+            //2.引用类型都有隐式原型_proto_属性,它的值为一个普通的属性值
+            console.log("obj._proto_",obj._proto_);
+            console.log("arr._proto_",arr._proto_);
+            console.log("fn._proto_",fn._proto_);
+
+            //引用类型的隐式原型属性的属性值指向它的构造函数的显式原型prototype的属性值
+            console.log(obj._proto_==Object.prototype);
+            console.log(Object.prototype);
+            console.log(Object._proto_);
+
+
+            //若引用类型没有该属性，则会去它的隐式原型当中寻找
+
+        }
+    </script>
+  
+</body>
+</html>

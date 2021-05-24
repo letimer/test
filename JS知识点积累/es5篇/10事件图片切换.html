@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+   <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{
+            width:100%;
+        }
+        #outer{
+            width:400px;
+            margin: 0 auto;
+            padding:10px;
+            background-color: rgba(128, 255, 0, 0.158);
+            text-align: center;
+        }
+    </style>
+     <script>
+        /*
+        浏览器已经为我们提供了文档节点，对象这个对象是window属性
+        可以在页面中直接使用，文档节点代表的是整个网页
+        
+        console.log(document);
+
+        //获取到Button对象,使用get
+        document.write(btn);
+
+        //修改按钮当中的文字
+        btn.innerHTML="I am a button";
+
+        
+        *事件，就是用户和浏览器之间的交互行为
+        *比如：点击按钮，鼠标移动，关闭窗口。。。
+        *处理事件：在事件对应的属性当中设置一些JS代码，当事件被触发时，这些代码将会执行
+         
+
+         //可以为按钮对应事件绑定处理函数的形式来响应事件
+         btn.onclick=function(){
+             alert('你还点~~~~~~~');
+         }
+
+         
+         *获取元素节点
+         *getElementById()  通过ID属性获取一个元素节点对象
+         * getElementsByTagName()通过标签名获取一组元素节点对象
+         * getElementsByName()通过name属性获取一组元素节点对象
+         * 
+        <div id="outer">
+        <p id="info"></p>
+        <img src='../image/风景五.jpg' alt="一"/><br>
+        <button id="prev"><上一张</button>
+        <button id="next">下一张></button>
+        </div>
+         
+         
+        
+        window.onload=function(){
+            //实现点击按钮切换图片
+            
+            //要切换图片就是要修改img标签的src属性
+            //获取img标签
+            var img=document.getElementsByTagName('img')[0];
+            //创建一个数组用来存放图片的路径
+            var imgArr=['../image/风景一.jpg','../image/风景二.jpg','../image/风景五.jpg','../image/风景六.jpg'];
+            //创建一个变量，来保存当前正在显示的图片的索引
+            var index=0;
+            var info=document.getElementById('info');
+            info.innerHTML='一共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+            
+
+           //获取两个按钮
+           var prev=document.getElementById("prev");
+           var next=document.getElementById("next");
+           prev.onclick=function(){
+               //alert('上一张');
+               index--;
+               if(index<0)
+               {
+                   index=imgArr.length-1;
+               }
+               img.src=imgArr[index];
+               //点击按钮以后，重新设置信息
+               info.innerHTML='一共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+           };
+           next.onclick=function(){
+               //alert('下一张');
+               //切换图片就是对其属性进行修改，修改方式为：   元素.属性=属性值
+               index++;
+               if(index>imgArr.length-1)
+               {
+                   index=0;
+               }
+               img.src=imgArr[index];
+               info.innerHTML='一共'+imgArr.length+'张图片,当前第'+(index+1)+'张';
+           };
+        }*/
+        </script>
+
+</head>
+<body>
+   
+   <script>
+        window.onload=function(){
+           //获取img标签
+           var img1=document.getElementById("img1");
+
+           //创建一个数组来保存图片路径
+           var imgArr=["../image/二维码.jpg","../image/风景二.jpg","../image/东华理工大学.jpg"];
+
+           //创建一个变量用来保存当前图片的索引
+           var index=0;
+
+           //将定时器定义在外面，否则btn2中的定时器访问不到
+           var timer;
+
+           //为btn1绑定一个单击响应函数(但是这种做法，每点击一次按钮，就会开启一个定时器
+           //此时timer保存的是最新的标识符，即使使用关闭定时器，也只能关掉最新的定时器，
+           //所以会造成速度越来越快且关不掉的情况)
+           //解决方法：在开启定时器之前，需要将上一个定时器关掉
+           var btn1=document.getElementById("btn1");
+            btn1.onclick=function(){
+            //开启定时器，用来切换图片
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+            //使得索引值自增
+             index++;
+
+             //判断索引是否超过最大索引
+              if(index>=imgArr.length){
+                index%=imgArr.length;
+                //也可以index=0(从头开始进行切换)
+              }
+
+              //修改img1的src属性
+              img1.src=imgArr[index];
+            },1000)
+           };
+
+           var btn2=document.getElementById("btn2");
+           btn2.onclick=function(){
+               //点击按钮之后停止定时器
+               clearInterval(timer);
+           }
+        }
+    </script>
+    <img id="img1" src="../image/东华理工大学.jpg">
+    <button id="btn1">开始</button>
+    <button id="btn2">停止</button>
+</body>
+</html>

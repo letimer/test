@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+        /*
+        *BOM  
+        --浏览器对象模型，BOM可以使我们通过JS来操作浏览器
+        在BOM当中为我们提供了一组对象，如：WINDOW,LOCATION,HISTORY,SCREEN,NAVIGATOR
+        
+       var ua=navigator.userAgent;
+       console.log(ua);
+       if(/chrome/i.test(ua))
+       {
+           alert("你是谷歌浏览器");
+       }
+       //地址栏的信息
+       console.log(location);
+       //代表浏览器的历史纪录
+       console.log(history);
+       //代表用户的屏幕的信息
+       console.log(window.screen);
+       //相当于window,代表的是整个浏览器的窗口
+       console.log(self);
+       */
+       var btn=document.getElementById("btn");
+       btn.onclick=function(){
+           //history是对象，history.length则是历史长度
+           //alert(history.length);
+           //返回到上一个历史地址back()
+           //history.back();
+           //go()用来跳转到指定的页面，-1，向后跳一个(回到上一个历史地址栏)
+           //history.go(-1);
+
+
+           //location该对象中封装了浏览器的地址栏的信息,assign()可以用来跳转到其他的页面，相当于直接修改location
+           //location.assign("http://ww.baidu.com");
+
+           //reload()相当于重新加载当前页面，作用和刷新按钮一样
+           //如果在方法中传递一个true，作为参数，则会强制清空缓存，刷新页面，如果为false，则会看是否改变，不改变的话则
+           //直接从缓存当中装载文档
+           location.reload(true);
+       };
+    };
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <h1>location</h1>
+    <input type="text">
+</body>
+</html>

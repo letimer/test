@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #employee{
+            border:1px dashed;
+        }
+        #add{
+            border:1px solid;
+            padding:10px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            /*
+            点击超链接可以删除员工信息
+            */
+           var allA=document.getElementsByTagName('a');
+           for(var i=0;i<allA.length;i++)
+           {
+               allA[i].onclick=function(){
+                   //点击超链接以后需要删除超链接所在的那行，获取tr
+                   var tr=this.parentNode.parentNode;
+                   var name=tr.children[0].innerHTML;
+                   //删除前来一个确认以及取消删除对象的弹框
+                   var flag=confirm("确认删除"+name+"吗");
+                   if(flag)
+                   {
+                      tr.parentNode.removeChild(tr);
+                   }
+               }
+           }
+        
+        /*
+        *添加员工的功能
+        *点击按钮以后，将员工的信息添加到其中
+        */
+
+        //为提交按钮绑定一个单机响应函数
+        var addEmpButton=document.getElementById('addEmpButton');
+        addEmpButton.onclick=function(){
+            //获取用户填写的信息
+            var name=document.getElementById('empname').value;
+            var email=document.getElementById('email').value;
+            var salary=document.getElementById('salary').value;
+            alert(name);
+            //需要将获取到的信息保存到tr当中
+            //创建一个新的tr
+            var tr=document.createElement("tr");
+            //创建四个新的td
+            var nameTd=document.createElement("td");
+            var emailTd=document.createElement("td");
+            var salaryTd=document.createElement("td");
+            var aTd=document.createElement("td");
+            //创建文本节点
+            var nameText=document.createTextNode(name);
+            var emailText=document.createTextNode(email);
+            var salaryText=document.createTextNode(salary);
+            var delText=document.createTextNode("Delete");
+            //将文本条件添加到td当中
+            nameTd.appendChild('nameText');
+            emailTd.appendChild('emailText');
+            salaryTd.appendChild('salaryText');
+            a.appendChild(delText);
+            aTd.appendChild(a);
+            //将td添加到tr当中
+            tr.appendChild(nameTd);
+            tr.appendChild(emailTd);
+            tr.appendChild(salaryTd);
+            tr.appendChild(aTd);
+
+            //获取table
+            var employeeTable=document.getElementById("employee");
+            //将tr添加到table当中
+            employeeTable.appendChild(tr);
+
+        };
+    }
+    </script>
+</head>
+<body>
+    <div id="formdiv">
+        <h4>添加新员工</h4>
+        <table id="add">
+            <tr>
+                <td class="word">name:</td>
+                <td class="inp">
+                    <input type="text" name="empname" id="empname"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email:</td>
+                <td class="inp">
+                    <input type="text" name="email" id="email"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary:</td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary"/>
+                </td>
+            </tr>
+            <tr colspan="2"  align="center">
+               <td><button id="addEmpButton" value="abc">submit</button><td>
+            </tr>
+        </table>
+        <Table id="employee">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <th>Tom</th>
+                <th>tom@tom.com</th>
+                <th>5000</th>
+                <th><a href='javascript:;'>Delete</a></th>
+            </tr>
+            <tr>
+                <th>Jerry</th>
+                <th>tom@tom.com</th>
+                <th>5000</th>
+                <th><a href='javascript:;'>Delete</a></th>
+            </tr>
+            <tr>
+                <th>Lisa</th>
+                <th>tom@tom.com</th>
+                <th>5000</th>
+                <th><a href='javascript:;'>Delete</a></th>
+            </tr>
+        </Table>
+    </div>
+    
+</body>
+</html>

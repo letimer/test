@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../Web前端框架/js/vue.js"></script>
+    <script src="../Web前端框架/js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/login/12">登录</router-link>
+        <router-link to='/register?name=der'>注册</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        //组件的模板对象
+        var login={
+            template:"<h1>登录----{{$route.params.id}}</h1>"
+        }
+        var register={
+            template:`<div><h1>注册----{{$route.query.name}}</h1>
+            <router-link to="/register/tab1">tab1</router-link>,
+            <router-link to="/register/tab2">tab2</router-link>,
+            <router-view></router-view>
+           </div>
+            `
+        }
+
+        //创建子组件
+        var tab1={
+            template:`<h1>我是子组件一</h1>`
+        }
+        var tab2={
+            template:`<h1>我是子组件二</h1>`
+        }
+
+        //组件里面的children组件路径和其父组件当中的路径保持一致即可展现出来
+        var router=new VueRouter({
+            routes:[
+                {path:'/login/:id',component:login},
+                {path:'/register',
+                component:register,
+                children:[
+                    {path:'/register/tab1',component:tab1},
+                    {path:'/register/tab2',component:tab2}
+                ]}
+            ]
+        })
+        var vm=new Vue({
+            el:"#app",
+            data:{
+            },
+            router:router
+        })
+    </script>
+<body>
+    
+</body>
+</html>

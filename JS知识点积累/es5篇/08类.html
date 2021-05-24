@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .b1{
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+        .b2{
+            width:100px;
+            height:100px;
+            background-color: rgb(83, 216, 187);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            //获取box1和btn1
+            var box=document.getElementById("box1");
+            var btn01=document.getElementById("btn01");
+
+            //为btn01绑定单击响应函数
+            btn01.onclick=function(){
+
+                /*缺点：通过style属性来修改样式，每修改一个样式，浏览器就需要重新渲染一次页面,执行性能比较差*/
+                //box.style.width="200px";
+
+                //采用className属性进行修改,优点：行为和表现进一步分离，
+                box.className+=" b2";
+            }
+        }
+    </script>
+    <button id="btn01">点击按钮之后修改box1样式</button>
+    <div id="box1" class="b1"></div>
+    </body>
+</html>
