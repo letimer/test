@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigInt类型和绝对全局对象</title>
+</head>
+<body>
+    <script>
+// //bigInt-用于大数值的运算
+        let n=521n;
+        console.log(n,typeof n);
+
+        //函数
+        let n=123;
+        console.log(BigInt(n));
+
+        // //大数值的运算
+        let max=Number.MAX_SAFE_INTEGER;
+        console.log(max);
+        console.log(max+1);
+        //下面运算不能使得其数值结果再进行变大，需要使用bigint才行
+        console.log(max+2);
+
+        // //BigInt不能和普通的数据类型进行运算，需要将普通类型进行转换才行
+        console.log(BigInt(max));
+        //下面两种情况报错，要进行类型转换
+        // console.log(BigInt(max)+1);
+        // console.log(BigInt(max)+2);
+        console.log(BigInt(max)+BigInt(1));
+        console.log(BigInt(max)+BigInt(2));
+
+
+//globalThis-可以忽略环境，直接指向全局变量
+        console.log(this);
+        console.log(globalThis);
+    </script>
+</body>
+</html>

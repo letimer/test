@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可选链操作符</title>
+</head>
+<body>
+    <script>
+        //?.当应对对象类型的参数深度比较深的时候
+        function main(config){
+            //第一种找参方法
+            //const dbHost=config && config.db && config.db.host;
+
+            //第二种
+            const dbHost=config?.db?.host;
+            
+            console.log(dbHost);
+        }
+        main({
+            db:{
+                host:"192.168.1.100",
+                username:"root"
+            },
+            cache:{
+                host:"192.168.1.200",
+                username:"admin"
+            }
+        })
+    </script>
+</body>
+</html>
