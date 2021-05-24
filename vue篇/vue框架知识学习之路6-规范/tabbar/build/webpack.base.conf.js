@@ -25,7 +25,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      //下面的别名的意思是@表示的是自动去寻找src路径
       '@': resolve('src'),
+      'assets':resolve('src/assets'),
+      'components':resolve('src/components'),
+      'views':resolve('src/views'),
     }
   },
   module: {
