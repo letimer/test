@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store=new Vuex.Store({
     //state对应一个对象
     state:{
+        counter:10
     },
     mutations:{
     },
