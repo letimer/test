@@ -11,6 +11,13 @@ const store=new Vuex.Store({
         counter:10
     },
     mutations:{
+        //方法并且方法中默认有一个state
+        increment(state){
+            state.counter++
+        },
+        decrement(state){
+            state.counter--
+        }
     },
     actions:{
     },
