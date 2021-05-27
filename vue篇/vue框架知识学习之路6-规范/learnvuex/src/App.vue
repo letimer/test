@@ -4,6 +4,9 @@
     <h2>{{$store.state.counter}}</h2>
     <button @click="addtion">+</button>
     <button @click="subtion">-</button>
+    <button @click="addcounter(5)">+5</button>
+    <button @click="addcounter(10)">+10</button>
+    <button @click="addstu">添加学生</button>
     <h2>-----app内容：getters相关信息-----</h2>
     <p>{{$store.getters.powerCount}}</p>
     <p>{{$store.getters.more20stu}}</p>
@@ -33,6 +36,13 @@ export default {
     },
     subtion(){
       this.$store.commit('decrement')
+    },
+    addcounter(counter){
+      this.$store.commit('increcounter',counter)
+    },
+    addstu(){
+      const stu={id:114,name:'allen',age:35}
+      this.$store.commit('addstudent',stu)
     }
   }
 }
