@@ -4,6 +4,11 @@
     <h2>{{$store.state.counter}}</h2>
     <button @click="addtion">+</button>
     <button @click="subtion">-</button>
+    <h2>-----app内容：getters相关信息-----</h2>
+    <p>{{$store.getters.powerCount}}</p>
+    <p>{{$store.getters.more20stu}}</p>
+    <p>{{$store.getters.more20stulen}}</p>
+    <p>{{$store.getters.moreAgeStu(20)}}</p>
     <h2>-----hellovuex内容-----</h2>
     <HelloVuex/>
   </div>
