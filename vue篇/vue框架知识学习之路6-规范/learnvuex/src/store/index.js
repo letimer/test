@@ -14,7 +14,11 @@ const store=new Vuex.Store({
             {id:2,name:'李四',age:19},
             {id:3,name:'王五',age:20},
             {id:4,name:'小六',age:21}
-        ]
+        ],
+        info:{
+            name:"letimer",
+            age:30
+        }
     },
     mutations:{
         //方法并且方法中默认有一个state
@@ -35,6 +39,12 @@ const store=new Vuex.Store({
         addstudent(state,stu){
             state.students.push(stu)
         },
+        updateinfos(state){
+            // state.info.name="location"
+            // state.info['address']="北京"
+            // Vue.set(state.info,'address','洛杉矶')
+            Vue.delete(state.info,'age')
+        }
     },
     actions:{
     },

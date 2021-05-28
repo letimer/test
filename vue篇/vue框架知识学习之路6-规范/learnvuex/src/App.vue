@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h2>-----app内容-----</h2>
-    <h2>{{$store.state.counter}}</h2>
+    <h2>-----app内容:mutations相关-----</h2>
     <button @click="addtion">+</button>
     <button @click="subtion">-</button>
     <button @click="addcounter(5)">+5</button>
@@ -13,6 +12,9 @@
     <p>{{$store.getters.more20stulen}}</p>
     <p>{{$store.getters.moreAgeStu(20)}}</p>
     <p>{{$store.getters.addanother}}</p>
+    <h2>-----app内容：info内容是否为响应式的-----</h2>
+    <p>{{$store.state.info}}</p>
+    <button @click="updateinfo">修改信息</button>
     <h2>-----hellovuex内容-----</h2>
     <HelloVuex/>
   </div>
@@ -52,6 +54,9 @@ export default {
     addstu(){
       const stu={id:114,name:'allen',age:35}
       this.$store.commit('addstudent',stu)
+    },
+    updateinfo(){
+      this.$store.commit("updateinfos")
     }
   }
 }
