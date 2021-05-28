@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <h2>-----app内容:modules相关内容-----</h2>
+    <h2>{{$store.state.a.name}}</h2>
+    <button @click="upatename">修改名字</button>
+    <h2>{{$store.getters.fullname1}}</h2>
+    <h2>{{$store.getters.fullname2}}</h2>
+    <h2>{{$store.getters.fullname3}}</h2>
+    <button @click="mupdatename">异步修改名字</button>
     <h2>-----app内容:mutations相关-----</h2>
     <button @click="addtion">+</button>
     <button @click="subtion">-</button>
@@ -60,7 +67,27 @@ export default {
       this.$store.commit('addstudent',stu)
     },
     updateinfo(){
-      this.$store.commit("updateinfos")
+      // this.$store.commit("updateinfos")
+
+      // this.$store.dispatch('aupdateinfos',{
+      //   message:"我是携带的信息",
+      //   success:()=>{
+      //       console.log('执行完了');
+      //   }
+      // })
+
+
+      this.$store
+      .dispatch('aupdateinfos',"我是传递的信息")
+      .then(res=>{
+        console.log(res);
+      })
+    },
+    upatename(){
+      this.$store.commit("mupdatename","lisi")
+    },
+    mupdatename(){
+      this.$store.dispatch('aupdatenames')
     }
   }
 }
