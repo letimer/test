@@ -24,12 +24,17 @@ const store=new Vuex.Store({
         decrement(state){
             state.counter--
         },
-        increcounter(state,counter){
-            state.counter+=counter
+        //第一种风格
+        // increcounter(state,counter){
+        //     // state.counter+=counter
+        //     console.log(counter);
+        // },
+        increcounter(state,payload){
+           state.counter+=payload.counter
         },
         addstudent(state,stu){
             state.students.push(stu)
-        }
+        },
     },
     actions:{
     },

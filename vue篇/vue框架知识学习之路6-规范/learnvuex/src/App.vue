@@ -12,6 +12,7 @@
     <p>{{$store.getters.more20stu}}</p>
     <p>{{$store.getters.more20stulen}}</p>
     <p>{{$store.getters.moreAgeStu(20)}}</p>
+    <p>{{$store.getters.addanother}}</p>
     <h2>-----hellovuex内容-----</h2>
     <HelloVuex/>
   </div>
@@ -27,7 +28,7 @@ export default {
   data (){
     return {
       message: '我是APP组件',
-      // counter:0
+      counter:0
     }
   },
   methods:{
@@ -38,7 +39,15 @@ export default {
       this.$store.commit('decrement')
     },
     addcounter(counter){
-      this.$store.commit('increcounter',counter)
+      //第一种风格，此时的counter只传入一个数值counter
+      // this.$store.commit('increcounter',counter)
+
+      //第二种风格，此时传入的是一个对象（属性counter为传入的参数，属性age为18）
+      this.$store.commit({
+      type:"increcounter",
+      counter,
+      age:18
+      })
     },
     addstu(){
       const stu={id:114,name:'allen',age:35}
