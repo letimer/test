@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var num=1;
+    //     var num=1;
 
-        /*开启一个定时器
-        setInterval(function(){
-            console.log(num++);
-        },3000)
-        */
+    //     /*开启一个定时器
+    //     setInterval(function(){
+    //         console.log(num++);
+    //     },3000)
+    //     */
 
-        /*
-        延时调用，延时调用一个函数补马上执行，而是隔一段时间以后再执行
-        */
-      var timer= setTimeout(function(){
-           console.log(num++);
-       },100);
-       clearTimeout(timer);
+    //     /*
+    //     延时调用，延时调用一个函数补马上执行，而是隔一段时间以后再执行
+    //     */
+    //   var timer= setTimeout(function(){
+    //        console.log(num++);
+    //    },100);
+    //    clearTimeout(timer);
+//    var reg=/[^E]/
+// document.write(reg.test(" E"));
+// var str4="hello hello aec afc";
+// result=str4.search(/a[ef]c/);
+// document.write(result+"</br>");
+//match会将匹配到的内容封装到一个数组中返回，即使只调查到一个结果
+var str7="       hello der 2021.1.4      ";
+console.log(str7);
+str7=str7.replace(/^\s*/,"");
+console.log(str7);
+str7=str7.replace(/\s*$/,"");
+console.log(str7);
+str7=str7.replace(/\s*$|^\s*/g,"");
     </script>
 </head>
 <body>
