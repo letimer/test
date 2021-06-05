@@ -3,8 +3,9 @@
         //引用类型：
         //1.浅拷贝：赋的是值地址或者说引用（引用类型变量在内存中保存的内容）
         //2.深拷贝：创建一个新的数组和对象，将原对象的各种属性的值拷贝过来，是值，而不是引用
+        //实现深拷贝的方法：JSON,自定义函数，当对象只有一级属性时，还可以用slice,boject.assign,concat
 
-        //浅拷贝如下：
+        //1.自定义函数
         var p={
             "id":"007",
             "name":"刘德华",
@@ -68,8 +69,27 @@
             }
             return newObj;
         }
-        let pNew=copyObj(p);
-        pNew.wife.name="张三丰";
-        pNew.wife.address.city="香港";
-        console.log(pNew);
-        console.log(p);
+
+        //2.JSON
+        function deep(obj){
+            var newobj=JSON.stringify(obj);
+            var copyobj=JSON.parse(newobj);
+            return copyobj
+        }
+
+        //3.Object.assign
+        var obj={a:1,b:2}
+        var copyobj=Object.assign({},obj)
+        console.log(copyobj);
+
+        //4.concat
+        var arr=[1,2,3]
+        var newarr=[].concat(arr)
+        console.log(newarr);
+
+        //5.slice
+        var arr=[1,2,3]
+        var newarr=arr.slice(0)
+        console.log(newarr);
+
+
