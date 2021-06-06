@@ -9,4 +9,9 @@
         //1.table表格布局
         //2.display(确定元素的显示类型block,inline,inline-block)/position(确定位置（static,relative...）)
         //3.flexbox布局(未大范围支持，兼容性不好)
+
         //4.float布局（元素浮动，脱离文档流，但是不脱离文本流，适配性最好）
+        //清除浮动是为了解决父元素因为子级元素浮动引起内部高度为0的问题
+        //1.父级添加overflow方法，可以通过触发BFC的方式，实现清除浮动
+        //2.使用:after伪元素
+        //3.使用before和after双为元素清除浮动
