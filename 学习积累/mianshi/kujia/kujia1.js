@@ -11,6 +11,8 @@ function debunde(handler,delay){
         },delay);
     }
 }
+
+
 //节流：预定一个函数只有在大于等于执行周期才会执行，周期内不执行
 function throttle(handler,wait){
     var lasttime=0;
