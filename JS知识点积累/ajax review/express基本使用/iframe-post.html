@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax-express框架的引用</title>
+    <style>
+        #result{
+            width:100px;
+            height:100px;
+            border:solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        //获取元素
+        const result=document.getElementById('result')
+        //绑定事件
+        result.addEventListener("mouseover",function(){
+            //创建对象
+            const xhr=new XMLHttpRequest();
+            //初始化，设置请求方法和url
+            xhr.open('POST','http://127.0.0.1:8000/')
+            //发送
+            xhr.send();
+            //对服务端返回的结果进行处理
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status>=200&&xhr.status<300||xhr.status===304){
+                        result.innerHTML=xhr.response
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
