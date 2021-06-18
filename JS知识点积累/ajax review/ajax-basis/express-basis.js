@@ -11,6 +11,22 @@ app.get('/express-json',(request,response)=>{
     //设置响应内容
     response.send('hello express get')
 })
+//因为自定义了请求头（iframe-post），所以要设置接收各种请求头，再加上会发送options请求，所以将Post改为all
+app.all('/express-json',(request,response)=>{
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin',"*")
+    //使得接收各种请求头
+    response.setHeader('Access-Control-Allow-Headers','*')
+    //响应一个数据
+    const data={
+        name:"atguigu"
+    }
+    //进行对字符串的转换
+    let str=JSON.stringify(data);
+     //设置响应内容
+     response.send(str)
+
+})
 
 //延时响应
 app.get('/delay',(request,response)=>{
@@ -37,21 +53,13 @@ app.all('/jquery',(request,response)=>{
     // },3000)
 })
 
-//因为自定义了请求头（iframe-post），所以要设置接收各种请求头，再加上会发送options请求，所以将Post改为all
-app.all('/express-json',(request,response)=>{
-    //设置响应头，允许跨域
+//axios
+app.all('/axios',(request,response)=>{
+    //设置响应头允许跨域
     response.setHeader('Access-Control-Allow-Origin',"*")
-    //使得接收各种请求头
     response.setHeader('Access-Control-Allow-Headers','*')
-    //响应一个数据
-    const data={
-        name:"atguigu"
-    }
-    //进行对字符串的转换
-    let str=JSON.stringify(data);
-     //设置响应内容
-     response.send(str)
-
+        const data={name:"尚硅谷"}
+        response.send(JSON.stringify(data))
 })
 
 //4.监听

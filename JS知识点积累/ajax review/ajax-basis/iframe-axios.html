@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios发送ajax</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.9.1/axios.js"></script>
+</head>
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>AJAX</button>
+    <script>
+        const btns=document.querySelectorAll('button');
+        axios.defaults.baseURL="http://127.0.0.1:8000"
+        btns[0].onclick=function(){
+            //GET请求（URL，配置信息）
+            axios.get('/axios',{
+                //url参数
+                params:{
+                    id:100,
+                    vip:7
+                },
+                //请求头信息
+                headers:{
+                    name:"atguigu",
+                    age:20
+                }
+            }).then(value=>{
+                console.log(value);
+            })
+        }
+        btns[1].onclick=function(){
+            //post方法的话第一个参数是url,第二个参数是请求体,第三个是其它配置
+            axios.post('/axios',{
+                username:'admin',
+                password:'admin'
+            },
+            {
+                //url参数
+                params:{
+                    id:100,
+                    vip:7
+                },
+                //请求头信息
+                headers:{
+                    name:"atguigu",
+                    age:20
+                }
+            }).then(value=>{
+                console.log(value);
+            })
+        }
+    </script>
+</body>
+</html>
