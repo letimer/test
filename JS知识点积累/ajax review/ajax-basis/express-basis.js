@@ -53,12 +53,19 @@ app.all('/jquery',(request,response)=>{
     // },3000)
 })
 
-//axios
+//axios服务
 app.all('/axios',(request,response)=>{
     //设置响应头允许跨域
     response.setHeader('Access-Control-Allow-Origin',"*")
     response.setHeader('Access-Control-Allow-Headers','*')
         const data={name:"尚硅谷"}
+        response.send(JSON.stringify(data))
+})
+
+app.all('/fetch',(request,response)=>{
+    response.setHeader('Access-Control-Allow-Origin',"*")
+    response.setHeader('Access-Control-Allow-Headers','*')
+    const data={name:"尚硅谷"}
         response.send(JSON.stringify(data))
 })
 
