@@ -14,8 +14,9 @@
     <script>
         const btns=document.querySelectorAll('button');
         axios.defaults.baseURL="http://127.0.0.1:8000"
+
+        //GET请求（URL，配置信息）
         btns[0].onclick=function(){
-            //GET请求（URL，配置信息）
             axios.get('/axios',{
                 //url参数
                 params:{
@@ -31,8 +32,9 @@
                 console.log(value);
             })
         }
+
+        //post方法的话第一个参数是url,第二个参数是请求体,第三个是其它配置
         btns[1].onclick=function(){
-            //post方法的话第一个参数是url,第二个参数是请求体,第三个是其它配置
             axios.post('/axios',{
                 username:'admin',
                 password:'admin'
@@ -50,6 +52,34 @@
                 }
             }).then(value=>{
                 console.log(value);
+            })
+        }
+
+        //axios函数(url,头信息，请求体参数)
+        btns[2].onclick=function(){
+            axios({
+                //url
+                url:'/axios',
+                //请求方法
+                methods:'GET',
+                //url参数
+                params:{
+                   vip:10,
+                   day:20
+                },
+                //头信息
+                headers:{
+                    a:100,
+                    b:200
+                },
+                //请求体参数
+                data:{
+                    username:'admin',
+                    password:'admin'
+                }
+            }).then((response)=>{
+                console.log(response.headers);
+                console.log(response.data);
             })
         }
     </script>
