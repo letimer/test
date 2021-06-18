@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            width:200px;
+            height:100px;
+            border:solid 1px #89b;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        const result=document.getElementById('result');
+        //绑定键盘按下事件
+        window.onkeydown=function(){
+            const xhr=new XMLHttpRequest();
+            //设置响应体数据类型
+            xhr.responseType='json';
+            xhr.open('GET','http://127.0.0.1:8000/express-json');
+            xhr.send();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    if(xhr.status>=200&&xhr.status<300){
+                        //console.log(xhr.response);
+                        //对传过来的内容进行手动转换
+                        //result.innerHTML=JSON.parse(xhr.response)
+
+                        //自动转换
+                        result.innerHTML=xhr.response.name;
+                        console.log(xhr.response);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

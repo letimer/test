@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax请求取消以及重复请求问题</title>
+    <style>
+        #result{
+            width:200px;
+            height:100px;
+            border:solid 1px #89b;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+    <button>点击发送</button>
+    <button>点击取消</button>
+    <script>
+        const result=document.getElementById('result');
+        //因为在两个函数中都要用到x,如果在某个函数中使用了const定义x，则另外一个函数中用不了
+        let x=null;
+        //标识变量
+        let isSending=false;//是否正在发送ajax请求
+
+        //发送请求
+        const btns=document.querySelectorAll("button");
+        btns[0].onclick=function(){
+            //判断标识变量
+            if(isSending) x.abort();
+            x=new XMLHttpRequest();
+            isSending=true;
+            x.open('GET',"http://127.0.0.1:8000/delay");
+            x.send();
+            x.onreadystatechange=function(){
+                if(x.readyState===4){
+                    //修改标识变量（标识已经发送完毕）
+                    isSending=false
+                }
+            }
+        }
+        //abort
+        btns[1].onclick=function(){
+            x.abort();
+        }
+    </script>
+</body>
+</html>
