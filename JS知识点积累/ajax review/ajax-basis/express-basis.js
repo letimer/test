@@ -11,6 +11,7 @@ app.get('/express-json',(request,response)=>{
     //设置响应内容
     response.send('hello express get')
 })
+
 //延时响应
 app.get('/delay',(request,response)=>{
     //设置响应头允许跨域
@@ -20,6 +21,22 @@ app.get('/delay',(request,response)=>{
         response.send('延时调用');
     },3000)
 })
+
+//jquery服务
+app.all('/jquery',(request,response)=>{
+    //设置响应头允许跨域
+    response.setHeader('Access-Control-Allow-Origin',"*")
+        const data={name:"尚硅谷"}
+        response.send(JSON.stringify(data))
+
+    //用来测试timeout
+    // response.setHeader('Access-Control-Allow-Origin',"*")
+    // setTimeout(()=>{
+    //     const data={name:"尚硅谷"}
+    //     response.send(JSON.stringify(data))
+    // },3000)
+})
+
 //因为自定义了请求头（iframe-post），所以要设置接收各种请求头，再加上会发送options请求，所以将Post改为all
 app.all('/express-json',(request,response)=>{
     //设置响应头，允许跨域
