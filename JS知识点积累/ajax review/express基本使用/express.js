@@ -11,10 +11,12 @@ app.get('/',(request,response)=>{
     //设置响应内容
     response.send('hello express')
 })
-
-app.post('/',(request,response)=>{
-     //设置响应头，允许跨域
-     response.setHeader('Access-Control-Allow-Origin',"*")
+//因为自定义了请求头（iframe-post），所以要设置接收各种请求头，再加上会发送options请求，所以将Post改为all
+app.all('/',(request,response)=>{
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin',"*")
+    //使得接收各种请求头
+    response.setHeader('Access-Control-Allow-Headers','*')
      //设置响应内容
      response.send('hello express post')
 

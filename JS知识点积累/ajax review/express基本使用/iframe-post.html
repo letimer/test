@@ -24,8 +24,12 @@
             const xhr=new XMLHttpRequest();
             //初始化，设置请求方法和url
             xhr.open('POST','http://127.0.0.1:8000/')
-            //发送
-            xhr.send();
+            //设置请求头(预定义请求头)
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+            //自定义请求头
+            xhr.setRequestHeader('name','atguigu')
+            //发送(设置参数，会在form data当中)
+            xhr.send('a=100&b=200');
             //对服务端返回的结果进行处理
             xhr.onreadystatechange=function(){
                 if(xhr.readyState===4){
