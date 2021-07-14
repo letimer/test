@@ -12,7 +12,7 @@
 
       created       ------el元素：undefined,data数据：初始化
 
-      beforemount   ------el元素：初始化，data数据：初始化  （生成了html，但是没有挂载）
+      beforemount   ------el元素：初始化，data数据：初始化  （生成了html，但是没有挂载,render函数首次被调用）
 
       mounted       ------用编译完后的html内容替换el属性，进行ajax的交互，进行页面的渲染（简而言之就是挂载）
 
