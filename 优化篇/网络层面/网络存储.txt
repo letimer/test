@@ -1,22 +1,39 @@
-缓存：
+一.http缓存：
 1.强缓存
 去缓存数据库中看资源是否过期，未过期则从缓存中获取，否则向服务器获取并写入缓存数据库
-
-强缓存知识点扩展：
-1.s-maxage 优先级高于 max-age，两者同时出现时，优先考虑 s-maxage。s-maxage 就是用于表示 cache
-服务器上的缓存的有效时间的，并只对 public 缓存有效。s-maxage仅在代理服务器中生效，客户端中我们只考虑max-age。)
-2.如果我们为资源设置了 public，那么它既可以被浏览器缓存，也可以被代理服务器缓存；如果我们设置了 private，
-则该资源只能被浏览器缓存。private 为默认值。
-3.no cache:绕开了浏览器，每次发请求都不会去问浏览器的情况，而是直接去询问服务器资源是否过期
- no store:不使用缓存策略，服务器缓存确认也绕开，直接下载完整的请求响应。
-
-
 2.协商缓存
 强缓存过期或者说需要验证的情况，从缓存数据库中获取标识，发送到服务器进行验证，然后看是否过期等，
 未过期则从缓存数据库中获取，不然从服务器获取并更新到缓存数据库
+
+强缓存知识点扩展：
+1.1 s-maxage 优先级高于 max-age，两者同时出现时，优先考虑 s-maxage。s-maxage 就是用于表示 cache
+服务器上的缓存的有效时间的，并只对 public 缓存有效。s-maxage仅在代理服务器中生效，客户端中我们只考虑max-age。)
+1.2 如果我们为资源设置了 public，那么它既可以被浏览器缓存，也可以被代理服务器缓存；如果我们设置了 private，
+则该资源只能被浏览器缓存。private 为默认值。
+1.3 no cache:绕开了浏览器，每次发请求都不会去问浏览器的情况，而是直接去询问服务器资源是否过期
+ no store:不使用缓存策略，服务器缓存确认也绕开，直接下载完整的请求响应。
+
+二.http缓存决策指南：
 （1）是否复用：no store
 （2）是否要向服务器发起确认 no cache
 （3）是否该资源能被代理服务器缓存：public private
 （4）设置过期时间
 （5）添加etag（按内容来标记是否修改）,last-modified（按秒来计算上一次修改时间）字段
+
+三.本地缓存
+3.1 cookie,sessionStorage,localStorage
+cookie是用来维持状态的，（体积有上限，超过则会进行剪裁），同一个域名下的所有请求都会携带cookie
+sessionStorage和localStorage区别？
+作用域和生命周期的不同
+相同域名下的两个页面，sessionlocal用不同浏览器打开会有问题，且sessionlocal的生命在页面关闭时结束。
+3.2两者的api无异
+存：**storage.setitem
+读：**storage.getitem
+删：**storage.removeitem
+清：**storage.clear
+ webstorage是cookie的扩展，只能处理简单的数据，对于复杂的数据当遇到大规模的、结构复杂的数据时，
+ Web Storage 也爱莫能助了。这时候我们需要终极大 boss——IndexedDB！
+3.3终极形态indexedDB
+能运行在浏览器上的非关系型数据库
+
 
