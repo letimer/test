@@ -13,3 +13,10 @@ webp:像jpg一样对丰富的图片信手拈来，像png一样支持透明，像
 我们可以直接将编码结果写入 HTML 或者写入 CSS，从而减少 HTTP 请求的次数。那能不能把大图也用base64转码呢？？
   不可以，Base64 编码后，图片大小会膨胀为原文件的 4/3（这是由 Base64 的编码原理决定的）。如果我们把大图也编码到 HTML 或
 CSS 文件中，后者的体积会明显增加，即便我们减少了 HTTP 请求，也无法弥补这庞大的体积带来的性能开销，得不偿失。
+
+
+
+webpack方面的优化：
+1.提高babel的工作效率
+如果我们选择 开启缓存 将 转译结果 缓存至 文件系统，则至少可以将 babel-loader 的工作效率提升两倍
+在build的webpack配置中参数设定loader: 'babel-loader?cacheDirectory=true'
