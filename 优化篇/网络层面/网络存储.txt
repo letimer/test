@@ -35,5 +35,10 @@ sessionStorage和localStorage区别？
  Web Storage 也爱莫能助了。这时候我们需要终极大 boss——IndexedDB！
 3.3终极形态indexedDB
 能运行在浏览器上的非关系型数据库
-
-
+indexedDB的应用场景：在 IndexedDB 中，我们可以创建多个数据库，一个数据库中创建多张表，
+一张表中存储多条数据——这足以 hold 住复杂的结构性数据。IndexedDB 可以看做是 LocalStorage 的一个升级，
+当数据的复杂度和规模上升到了 LocalStorage 无法解决的程度，我们毫无疑问可以请出 IndexedDB 来帮忙。
+（1）打开或者创建数据库
+  // 参数1位数据库名，参数2为版本号
+  const request = window.indexedDB.open("xiaoceDB", 1)
+ //创建一个 object store（object store 对标到数据库中的“表”单位）
