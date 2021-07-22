@@ -54,8 +54,21 @@
     for(let v of m){
         console.log(v);
     }
-
     console.log(m);
+
+
+    // 小练习：只有对同一个对象的引用，map结构才会将其视作同一个键
+    const map=new Map();
+    map.set(['a'],555);
+    console.log(map);
+    const re=map.get(['a'])//undefined
+
+    const m=new Map();
+    const o={p:"hello"}
+    m.set(o,'content')
+    console.log(m);
+    m.get(o)//content
+    //前者直接对数组引用，相当于在堆当中开辟了一个新的数组空间，后者是对栈内存中的o进行引用，所以指得是同一个
 </script>
     
 </body>
