@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 本节基础知识：
+    1.什么是数据？
+      *存储在内存中代表特定信息的‘东东’，本质上是0101...
+      *数据的特点：
+        可传递
+        可运算（赋值运算，逻辑运算）
+    2.什么是内存
+      *内存条通电后产生的可存储数据的空间（临时的）
+      *内存产生和死亡：内存条（电路板）==》通电==》产生内存空间==》存储数据==》处理数据==》内存空间和数据都消失
+      *一块小内存的2个数据
+        内部存储的数据
+        地址值
+    3.什么是变量
+      *可变化的量，由变量名和变量值组成
+      *每个变量都对应的一块小内存，变量名用来查找对应的内存，变量值
+    4.内存，数据，变量三者之间的关系
+    内存用来存放数据的空间
+    变量是内存的标识
+-->
+<!-- 本节相关问题：
+    问题1：var a=xxx,a内存中到底保存的是什么？
+        xxx是基本数据，保存的是这个数据
+        xxx是对象，保存的是对象的地址值
+        xxx是一个变量，保存的xxx的内容
+    问题2：关于引用变量赋值问题
+        2个引用变量指向同一个对象，通过一个变量修改对象的内部数据，另外一个白娘看到的是修改之后的数据
+ -->
+</body>
+<script>
+    //可传递
+    var a=3;
+    b=a;
+    console.log(b);
+    a=4;
+    console.log(a);
+
+    //关于引用变量赋值问题
+    var obj1={name:'tom'}
+    var obj2=obj1;
+    obj1.name='jack'
+    console.log(obj2.name);
+
+</script>
+</html>
