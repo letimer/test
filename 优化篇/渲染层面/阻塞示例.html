@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS阻塞测试</title>
+  <!-- 
+    **JS 引擎是独立于渲染引擎存在的**。
+    我们的 JS 代码在文档的何处插入，就在何处执行。
+    当 HTML 解析器遇到一个 script 标签时，它会暂停渲染过程，将控制权交给 JS 引擎。
+    JS 引擎对内联的 JS 代码会直接执行，对外部 JS 文件还要先获取到脚本、再进行执行。
+    等 JS 引擎运行完毕，浏览器又会把控制权还给渲染引擎，继续 CSSOM 和 DOM 的构建。
+    因此与其说是 JS 把 CSS 和 HTML 阻塞了，不如说是 JS 引擎抢走了渲染引擎的控制权。
+  -->
+  <style>
+    #container {
+      background-color: yellow;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+  <script>
+    // 尝试获取container元素
+    var container = document.getElementById("container")
+    console.log('container', container)
+    // 输出结果是null,阻塞了dom加载
+  </script>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    // 尝试获取container元素
+    var container = document.getElementById("container")
+    console.log('container', container)
+    //输出结果是<div id="container"></div>，此时加载到了container
+
+    // 输出container元素此刻的背景色
+    console.log('container bgColor', getComputedStyle(container).backgroundColor)
+    //输出的是yellow,所以也会阻塞cssom的构建
+  </script>
+  <style>
+    #container {
+      background-color: blue;
+    }
+  </style>
+</body>
+</html>
