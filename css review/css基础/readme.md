@@ -8,4 +8,5 @@
 ### backgrounds背景
 属性名可以为：background-color/image/repeat/attachment(fixed,auto...)/position该些顺序可以简写为background
 
-### 
+### 文本
+颜色(color),对齐方式（text-align）,文本修饰(text-direction),文本转换(text-transform),文本缩进（text-indent）
