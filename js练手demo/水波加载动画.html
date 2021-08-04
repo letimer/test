@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水波加载动画html+css</title>
+    <style>
+        body{
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 下面是水容器 */
+        .quan{
+            width:180px;
+            height:180px;
+            position: relative;
+            border-radius: 50%;
+            border:3px solid rgb(246,247,248);
+            /* 水平位移，垂直位移，模糊程度，阴影大小，阴影颜色 */
+            box-shadow: 0 0 0 3px rgb(41,134,196);
+        }
+        /* 水容器里面的水 */
+        .shui{
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color: rgb(23,106,201);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        /* 添加伪类，使得一个带点圆角的方形在旋转，营造出水晃动的层次1 */
+        .shui::after{
+            content:"";
+            position: absolute;
+            top:0;
+            left:50%;
+            width:150%;
+            height:150%;
+            border-radius:40%;
+            background-color: rgb(241, 247, 248);
+            animation:shi 3s linear infinite;
+        }
+        @keyframes shi{
+            0%{
+                transform:translate(-50%,-65%) rotate(0deg);
+            }
+            100%{
+                transform:translate(-50%,-65%) rotate(360deg);
+            }
+        }
+        /* 水晃动的层次2*/
+        .shui::before{ 
+            content:"";
+            position: absolute;
+            top:0;
+            left:50%;
+            width:150%;
+            height:150%;
+            border-radius:42%;
+            background-color: rgb(162, 192, 236);
+            animation:xu 4s linear infinite;
+        }
+        @keyframes xu{
+            0%{
+                transform:translate(-50%,-60%) rotate(0deg);
+            }
+            100%{
+                transform:translate(-50%,-60%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 两个嵌套的盒子，一个是容器一个是水，水波动的思路是两个不一样的圆角盒子以不同的速度和颜色背景在旋转，营造出水波波动的效果 -->
+    <div class="quan">
+        <div class="shui"></div>
+    </div>
+</body>
+</html>
