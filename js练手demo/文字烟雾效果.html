@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字烟雾效果</title>
+    <style>
+        body{
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(36, 36, 58);
+            overflow: hidden;
+        }
+        .text{
+            color:white;
+            width:700px;
+            text-indent: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            /* 使得用户不可选中文字片段 */
+            user-select: none;
+            position:relative
+        }
+        .text span{
+            /* position: relative; */
+            transform-origin: bottom;
+            text-indent:0;
+            display: inline-block;
+        } 
+        .text .move{
+            animation:up 2s linear forwards;
+        }
+        @keyframes up{
+            100%{
+                opacity: 0;
+                /* 实现滑动时模糊的效果 */
+                filter: blur(20px);
+                transform:translate(600px,-500px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 思路：获取文字，给每一个文字加上一个span标签，获取该标签，给其添加鼠标事件和新样式，样式中设置动画样式 -->
+    <p class='text'>
+        《一个青年艺术家的画像》中的主人所有的作品中，《一个青年艺术家的话》作为自传，很大程度上象征自己，
+        所有作品中，《一个青年艺术家的画像》作为乔伊斯自传性的小说以其独特的的高超的艺术手法而受人推崇。小
+        说中很多细节取材于乔布斯的早期生活，主人公斯蒂芬与乔伊斯早年的经历一样，在孤独中成长，最终走向献身
+        艺术的征程，孤独，作为天才的通病，却恰是艺术家成功的基石。
+    </p>
+    <script>
+        //1.获取该文本（此时的txt是<p>..........</p>）
+        var txt=document.querySelector(".text")
+
+        //textContent属性设置或者返回指定节点的文本内容
+        console.log(txt.textContent);
+
+        //2.将文本中的每一个非空字符给innerHTML
+        txt.innerHTML=txt.textContent.replace(/\S/g,'<span>$&</span>')
+
+        //js获取span标签，并且每一个字符都绑定一个鼠标经过事件,temp为每个字符
+        var arr=document.querySelectorAll("span")
+        arr.forEach(function(temp){
+            temp.addEventListener('mouseover',()=>{
+                //给每一个字符添加move这个类名,扩展：contains是否包含类名，为真假，remove删除类名，replace(旧名，新名)
+                temp.classList.add('move');
+            })
+        })
+    </script>
+</body>
+</html>
