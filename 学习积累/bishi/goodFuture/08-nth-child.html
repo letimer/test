@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* 不分类型，选择的是div子元素的第一个元素 */
+        div :nth-child(1){
+            background-color: red;
+        }
+        /* 表示的是div元素中不同类型的子元素的各第二个(所以第367行样式变化) */
+        div :nth-of-type(2){
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>第1行</h1>
+        <p>第2行</p>
+        <p>第3行</p>
+        <h2>第4行</h2>
+        <p>第5行</p>
+        <h1>第6行</h1>
+        <h2>第7行</h2>
+    </div>
+</body>
+</html>
