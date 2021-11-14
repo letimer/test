@@ -9,14 +9,13 @@
 </head>
 <body>
     <div id="app">
-        {{message}}
+        {{data}} is a {{data}}
     </div>
     <script>
-        const app=new Vue({
+        var data = { a: 1};
+        const app = new Vue ({
             el:"#app",
-            data:{
-                message:"你好哇"
-            }
+            data: data
         })
     </script>
 </body>

@@ -10,10 +10,8 @@
 <body>
     <div id="app">
         <h2>{{fullName}}</h2>
-       
     </div>
     <script>
-
         //每个计算属性当中都包含一个getter和setter
         //在之前的示例当中，我们只是通过getter来进行获取
         //我们也可以提供一个setter方法（不常用）
@@ -28,15 +26,15 @@
                 //计算属性一般没有set方法，只读属性
                 //可以使用传入一个类似于newvalue的形参，当在控制台中改变fullname时，会调用setter
                 fullName:{
+                    get: function() {
+                        return this.firstName + this.lastName
+                    },
                     set:function(newValue){
                         console.log(newValue);
-                        const names=newValue.split(' ');
+                        const names=newValue.split('');
                         this.firstName=names[0];
-                        this.lastName=names[1];
+                        this.lastName=names[newValue.length-1];
                     },
-                    get:function(){
-                        return this.firstName+' '+this.lastName;
-                    }
                 }
             }
         })
